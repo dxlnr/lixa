@@ -6,4 +6,4 @@ api_blueprint = Blueprint('api_blueprint', __name__)
 
 @api_blueprint.route('/')
 def index():
-    return 'Modalic api routes available.'
+    return 'lixa api routes available.'
