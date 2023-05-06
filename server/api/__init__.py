@@ -1,0 +1,9 @@
+"""API Entrypoint"""
+from http import HTTPStatus
+from flask import Blueprint
+
+api_blueprint = Blueprint('api_blueprint', __name__)
+
+@api_blueprint.route('/')
+def index():
+    return 'Modalic api routes available.'

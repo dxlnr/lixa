@@ -6,7 +6,8 @@ const Home = lazy(() => import ("./routes/home"));
 
 const App: Component = () => {
   return (
-    <div class="bg-cover h-screen bg-[url('./assets/bg.svg')]">
+    // <div class="bg-cover h-screen bg-[url('./assets/bg.svg')]">
+    <div class="bg-cover h-screen">
       <Navbar />
       <Routes>
         <Route path="/" component={Home} />
