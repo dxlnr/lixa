@@ -3,7 +3,7 @@ import logging
 from flask import Flask, Response, request
 from flask_cors import CORS
 from api import api_blueprint
-from api.copilot.prompts import copilot_blueprint 
+from api.copilot.routes import copilot_blueprint 
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
