@@ -1,15 +1,14 @@
 import { A } from "@solidjs/router";
 
 import Sidebar from "../components/sidebar/sidebar";
+import Gallery from "../components/gallery/gallery";
 
 const Home: Component = () => {
   return (
     <div class="bg-slate-50 h-screen flex flex-col h-9/10 justify-between p-2">
-      <main class="mb-auto h-10 text-left">
+      <div class="flex flex-row">
         <Sidebar />
-        <div class="font-2xl text-white ">
-        </div>
-      </main>
+      </div>
     </div>
   );
 };
