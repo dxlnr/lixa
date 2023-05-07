@@ -1,6 +1,12 @@
-import { createSignal } from 'solid-js';
+import { createEffect, createResource, createSignal } from 'solid-js';
 import { on } from 'solid-js/dom';
 
+
+const getImages = async () => {
+    const res = await fetch('');
+
+    return res.json()
+}
 
 const Gallery = () => {
     const [prompt, setPrompt] = createSignal('');
@@ -19,8 +25,13 @@ const Gallery = () => {
           },
           body: JSON.stringify(formData),
         });
-        await response.json();
+        const blob = await response.blob();
+        console.log(blob);
+        return blob
     };
+
+    const [imgs] = createResource(event, handleSubmit);
+
     return (
         <div class="container mx-auto pr-2 pl-2 pb-2">
           <div class="flex flex-col">
@@ -31,36 +42,16 @@ const Gallery = () => {
             </div>
             <div class="bg-white rounded-sm shadow-xl flex flex-wrap">
               <div class="flex w-1/2 flex-wrap">
-                <div class="w-full p-2 md:p-4">
-                  <img
-                    alt="gallery"
-                    class="block h-full w-full rounded-lg object-cover object-center"
-                    src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp" />
-                </div>
-              </div>
-              <div class="flex w-1/2 flex-wrap">
-                <div class="w-full p-2 md:p-4">
-                  <img
-                    alt="gallery"
-                    class="block h-full w-full rounded-lg object-cover object-center"
-                    src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(74).webp" />
-                </div>
-              </div>
-              <div class="flex w-1/2 flex-wrap">
-                <div class="w-full p-2 md:p-4">
-                  <img
-                    alt="gallery"
-                    class="block h-full w-full rounded-lg object-cover object-center"
-                    src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp" />
-                </div>
-              </div>
-              <div class="flex w-1/2 flex-wrap">
-                <div class="w-full p-2 md:p-4">
-                  <img
-                    alt="gallery"
-                    class="block h-full w-full rounded-lg object-cover object-center"
-                    src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(76).webp" />
-                </div>
+                <For each={imgs()}>
+                  {(i) => (
+                    <div class="w-full p-2 md:p-4">
+                      <img
+                        alt="gallery"
+                        class="block h-full w-full rounded-lg object-cover object-center"
+                        src={i} />
+                    </div>
+                  )}
+                </For>
               </div>
             </div>
           </div>

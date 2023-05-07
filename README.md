@@ -23,3 +23,6 @@ ThirdParties Content Creation Tools
 ## Material
 
 [Text-to-3D Textures](https://poly.cam/material-generator)
+
+## Paper
+[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/pdf/2112.10752.pdf)
