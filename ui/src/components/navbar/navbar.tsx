@@ -2,13 +2,24 @@ import { Routes, Route, A } from "@solidjs/router";
 import logo from "../../assets/logo4.svg";
 import pp from "../../assets/pp.jpg";
 
+
 const Navbar = () => {
   return (
     <nav class="bg-white border-gray-200 dark:bg-gray-900 drop-shadow-md">
         <div class="flex flex-wrap items-center justify-between p-4">
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
         <A href="https://lixa.ai" class="flex items-center"> 
             <img src={logo} class="h-8 mr-3" alt="logo" />
         </A>
+          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+              <A href="/collections" class="block py-2 pl-6 pr-2 text-black hover:text-violet-600 active:bg-violet-700" aria-current="page">Collections</A>
+            </li>
+            <li>
+              <A href="/brand" class="block py-2 pr-4 text-black hover:text-violet-600 active:bg-violet-700" aria-current="page">Brand</A>
+            </li>
+          </ul>
+        </div>
         <div class="flex items-center md:order-2">
             <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="bg-white md:hidden dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1" >
               <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>

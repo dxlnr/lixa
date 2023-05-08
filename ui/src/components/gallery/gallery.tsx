@@ -30,8 +30,9 @@ const Gallery = () => {
     return (
         <div class="container mx-auto pr-2 pl-2 pb-2">
           <div class="flex flex-col">
-            <div>
-                <input type="text" id="input-group-1" class="w-full placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow-lg outline-none focus:outline-none focus:ring ring-slate-400 px-3 py-3 h-12 mr-2" placeholder="prompt" value={prompt()} onChange={(e) => setPrompt(e.target.value)}/>
+            <div class="relative flex items-center">
+                <input type="text" id="input-group-1" class="w-full placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow-lg outline-none focus:outline-none focus:ring ring-slate-400 px-3 py-3 h-12" placeholder="prompt" value={prompt()} onChange={(e) => setPrompt(e.target.value)}/>
+                <button type="submit" class="text-black absolute right-2.5 text-sm font-bold px-2 py-2" value={prompt()} onSubmit={(e) => setPrompt(e.target.value)}>Generate</button>
             </div>
             <div class="bg-white rounded-sm shadow-xl flex flex-wrap">
               <div class="flex flex-wrap">
