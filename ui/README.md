@@ -1,34 +1,44 @@
-## Usage
+## UI 
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
-
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
 
 ```bash
-$ npm install # or pnpm install or yarn install
+npm install 
+# Run the website in dev mode.
+npm run dev
+# Build the static website.
+npm run build
 ```
-
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm dev` or `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
 ## Deployment
 
 You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+
+## Layout 
+
+Login (account) -> collections -> brand input -> creation tool 
+
+## Website Design 
+
+[OpenAI](https://openai.com/product/dall-e-2)
+
+
+## Website Performance Metrics
+
+- LCP (Largest Contentful Paint) : < 2.5s is good -> Bad LCP == Bad SEO
+    1. reduce resource load time
+    2. CDN (Content Delivery Network)
+    3. Blocking JS
+    4. Preload
+        E.g. `<link rel="preload" href="style.css" as="style" />`
+             `<img src="/icon.svg" fetchpriority="low">
+
+- FID (First Input Delay) : < 100ms is good 
+- CLS (Cumulative Layout Shift) : <0.1s is good
+
+Testing Tool: 
+- [Web Vitals Chrome Extensions](https://chrome.google.com/webstore/detail/web-vitals-tester/ifabcmgidbefjaahoobpomamcohgpeem)
+- [Unlighthouse](https://unlighthouse.dev/)
+
+## Tools 
+- [Astro](https://astro.build/)
+- [Solidjs](https://www.solidjs.com/). Find **solidjs** on [Discord](https://discord.com/invite/solidjs)
