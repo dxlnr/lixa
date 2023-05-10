@@ -1,4 +1,4 @@
-import { Routes, Route, A } from "@solidjs/router";
+import { A } from "@solidjs/router";
 import { createSignal } from 'solid-js';
 import { on } from 'solid-js/dom';
 
