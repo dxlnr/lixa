@@ -20,6 +20,7 @@ Login (account) -> collections -> brand input -> creation tool
 ## Website Design 
 
 [OpenAI](https://openai.com/product/dall-e-2)
+[Qonto](https://qonto.com/en)
 
 
 ## Website Performance Metrics
