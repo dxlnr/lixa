@@ -13,11 +13,19 @@ const Navbar = () => {
           <A href="https://lixa.ai" class="flex items-center">
             <img src={logo} class="h-8 mr-3" alt="logo" />
           </A>
-          <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+          <ul class="flex flex-col activate:bg-blue-600 font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
+            <li>
+              <A
+                href="/"
+                class="block py-2 pl-6 pr-1 text-black hover:text-violet-600"
+              >
+                Copilot  
+              </A>
+            </li>
             <li>
               <A
                 href="/collections"
-                class="block py-2 pl-6 pr-2 text-black hover:text-violet-600"
+                class="block py-2 pr-1 text-black hover:text-violet-600"
               >
                 Collections
               </A>

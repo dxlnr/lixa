@@ -10,7 +10,6 @@
 - VO: Eleven Labs
 - Music: SOUNDRAW AI Music
 
-
 ## Campaign Copilot
 
 For continous idea evaluation we need to have a function that uses the generated 
@@ -30,3 +29,24 @@ ThirdParties Content Creation Tools
 
 ## Tools
 - [MOJO](https://www.modular.com/)
+
+
+## Tech Stack
+
+[stackshare.io](https://stackshare.io/) : 
+
+Frontend :  
+ - SolidJs, (Redux), TailwindCSS, SASS, PostCSS, Webpack
+Server Framework : 
+ - Database (Redis, PostGres etc), Runtime (e.g. Flask for Python), WebServer: NGINX, Docker, Kubernetes (for multiple Containers), AWS, Terraform (Infrastructure as Code) 
+
+Extras:
+ - Github Actions
+
+API:
+ - GraphQl + Apollo, stripe (payment), Auth0 
+
+Options: Firebase
+
+
+

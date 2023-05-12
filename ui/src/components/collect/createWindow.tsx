@@ -26,7 +26,7 @@ const CreateWindow = () => {
               </g>
             </svg>
             <div class="flex items-center p-1.5">
-              <p class="text-sm text-black font-bold">Create with genta</p>
+              <p class="text-sm text-black font-semibold">create new</p>
             </div>
           </div>
         </label>
