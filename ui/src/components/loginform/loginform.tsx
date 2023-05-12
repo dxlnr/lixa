@@ -1,4 +1,4 @@
-import { A } from '@solidjs/router'
+import { A } from '@solidjs/router';
 
 const Login: Component = () => {
   return (
@@ -118,7 +118,7 @@ const Login: Component = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

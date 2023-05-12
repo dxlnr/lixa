@@ -1,6 +1,6 @@
-import { A } from '@solidjs/router'
+import type { Component } from 'solid-js';
 
-import LoginForm from '../components/loginform/loginform'
+import LoginForm from '../components/loginform/loginform';
 
 const Login: Component = () => {
   return (
@@ -10,7 +10,7 @@ const Login: Component = () => {
         <div class="hidden lg:block bg-[url('./assets/bg.svg')]"> </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

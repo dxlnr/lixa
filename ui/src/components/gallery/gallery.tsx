@@ -1,14 +1,14 @@
-import { createEffect, createResource, createSignal } from 'solid-js'
-import { on } from 'solid-js/dom'
+import { createEffect, createResource, createSignal } from 'solid-js';
+import { on } from 'solid-js/dom';
 
 const Gallery = () => {
-  const [prompt, setPrompt] = createSignal('')
+  const [prompt, setPrompt] = createSignal('');
 
   const handleSubmit = async (prompt) => {
     if (prompt) {
       const formData = {
         prompt: prompt,
-      }
+      };
       const response = await fetch(
         'http://192.168.88.18:5000/api/copilot/prompt',
         {
@@ -19,15 +19,15 @@ const Gallery = () => {
           },
           body: JSON.stringify(formData),
         }
-      )
-      const blob = await response.blob()
-      return URL.createObjectURL(blob)
+      );
+      const blob = await response.blob();
+      return URL.createObjectURL(blob);
     } else {
-      return null
+      return null;
     }
-  }
+  };
 
-  const [imgs] = createResource(prompt, handleSubmit)
+  const [imgs] = createResource(prompt, handleSubmit);
 
   return (
     <div class="container mx-auto pr-2 pl-2 pb-2">
@@ -101,7 +101,7 @@ const Gallery = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

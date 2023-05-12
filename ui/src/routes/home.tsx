@@ -1,8 +1,7 @@
-import { A } from '@solidjs/router'
+import type { Component } from 'solid-js';
 
-import Navbar from '../components/navbar/navbar'
-import Sidebar from '../components/sidebar/sidebar'
-import Gallery from '../components/gallery/gallery'
+import Navbar from '../components/navbar/navbar';
+import Sidebar from '../components/sidebar/sidebar';
 
 const Home: Component = () => {
   return (
@@ -14,7 +13,7 @@ const Home: Component = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

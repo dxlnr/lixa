@@ -1,16 +1,18 @@
-import { A } from '@solidjs/router'
+import type { Component } from 'solid-js';
 
-import Collections from '../components/navbar/navbar'
+import Navbar from '../components/navbar/navbar';
+import Collect from '../components/collect/collect';
 
-const Home: Component = () => {
+const Collections: Component = () => {
   return (
     <>
       <Navbar />
-      <div class="bg-stone-100 h-screen flex flex-col h-9/10 justify-between p-2">
-        <div class=""></div>
+      <div class="flex flex-col md:h-screen mx-10 md:mx-40 my-10">
+        <h1 class="text-xl font-bold py-10"> Collections </h1>
+        <Collect />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Collections
+export default Collections;

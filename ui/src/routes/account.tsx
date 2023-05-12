@@ -1,9 +1,7 @@
-import { A } from '@solidjs/router'
+import type { Component } from 'solid-js';
 
 const Account: Component = () => {
-  return (
-    <div class="bg-stone-100 h-screen flex flex-col h-9/10 justify-between p-2"></div>
-  )
-}
+  return <div></div>;
+};
 
-export default Account
+export default Account;

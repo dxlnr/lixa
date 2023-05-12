@@ -7,6 +7,8 @@ npm install
 npm run dev
 # Build the static website.
 npm run build
+# Code formatting
+npx prettier --write <targetFile>
 ```
 
 ## Deployment

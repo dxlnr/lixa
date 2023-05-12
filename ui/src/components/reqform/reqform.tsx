@@ -29,7 +29,7 @@ const ReqForm = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ReqForm
+export default ReqForm;

@@ -1,13 +1,13 @@
-import { createSignal } from 'solid-js'
-import { on } from 'solid-js/dom'
+import { createSignal } from 'solid-js';
+import { on } from 'solid-js/dom';
 
-import Gallery from '../../components/gallery/gallery'
+import Gallery from '../../components/gallery/gallery';
 
 const Sidebar = () => {
-  const [showElement, setShowElement] = createSignal(false)
+  const [showElement, setShowElement] = createSignal(false);
 
   function handleClick() {
-    setShowElement(!showElement())
+    setShowElement(!showElement());
   }
 
   return (
@@ -21,7 +21,7 @@ const Sidebar = () => {
           <div class="flex flex-row">
             <button
               type="button"
-              class="bg-white text-black hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-black-800 shadow-lg shadow-black-500/50 dark:shadow-lg dark:shadow-black-800/80 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+              class="bg-white text-black hover:bg-slate-400 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
               onClick={handleClick}
             >
               <svg
@@ -82,7 +82,7 @@ const Sidebar = () => {
         <div class="flex-none">
           <button
             type="button"
-            class="flex-none bg-white text-black hover:bg-slate-400 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-black-800 shadow-lg shadow-black-500/50 dark:shadow-lg dark:shadow-black-800/80 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+            class="flex-none bg-white text-black hover:bg-slate-400 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
           >
             <svg
               class="w-7 h-7"
@@ -111,7 +111,7 @@ const Sidebar = () => {
         <div class="flex-none">
           <button
             type="button"
-            class="flex-none bg-white text-black hover:bg-slate-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-black-800 shadow-lg shadow-black-500/50 dark:shadow-lg dark:shadow-black-800/80 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+            class="flex-none bg-white text-black hover:bg-slate-400 hover:bg-gradient-to-br shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
           >
             <svg
               class="w-7 h-7"
@@ -138,7 +138,7 @@ const Sidebar = () => {
         </div>
       </div>
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
