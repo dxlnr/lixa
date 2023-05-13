@@ -1,8 +1,15 @@
 import { A } from '@solidjs/router';
+import { useLocation } from '@solidjs/router';
 import logo from '../../assets/logo4.svg';
 import pp from '../../assets/pp.jpg';
 
 const Navbar = () => {
+  const location = useLocation();
+
+  const isActive = (url) => {
+    return location.pathname === url;
+  };
+
   return (
     <nav class="bg-white border-b border-gray-200">
       <div class="flex flex-wrap items-center justify-between p-4">
@@ -17,7 +24,7 @@ const Navbar = () => {
             <li>
               <A
                 href="/"
-                class="block py-2 pl-6 pr-1 text-black hover:text-violet-600"
+                class={`block py-2 pl-6 pr-1 hover:text-violet-600 ${isActive('/') ? 'text-black' : 'text-gray-400'}`}
               >
                 Copilot  
               </A>
@@ -25,7 +32,7 @@ const Navbar = () => {
             <li>
               <A
                 href="/collections"
-                class="block py-2 pr-1 text-black hover:text-violet-600"
+                class={`block py-2 pr-1 hover:text-violet-600 ${isActive('/collections') ? 'text-black' : 'text-gray-400'}`}
               >
                 Collections
               </A>
@@ -33,7 +40,7 @@ const Navbar = () => {
             <li>
               <A
                 href="/brand"
-                class="block py-2 pr-4 text-black hover:text-violet-600"
+                class={`block py-2 pr-4 hover:text-violet-600 ${isActive('/brand') ? 'text-black' : 'text-gray-400'}`}
               >
                 Brand
               </A>

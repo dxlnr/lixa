@@ -28,6 +28,7 @@
   "dependencies": {
     "@solidjs/router": "^0.8.2",
     "parse-path": "^7.0.0",
+    "solid-app-router": "^0.4.2",
     "solid-js": "^1.6.10",
     "solid-start": "^0.2.26"
   }
