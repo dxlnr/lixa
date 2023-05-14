@@ -2,7 +2,7 @@ import CreateWindow from './createWindow';
 
 const Collect = () => {
   return (
-    <div class="flex w-full">
+    <div class="flex">
       <CreateWindow />
     </div>
   );

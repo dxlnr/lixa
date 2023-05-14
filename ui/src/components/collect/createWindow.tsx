@@ -2,7 +2,7 @@ import { A } from '@solidjs/router';
 
 const CreateWindow = () => {
   return (
-    <div class="flex w-full">
+    <div class="flex">
       <A href="/">
         <label class="flex flex-col h-28 w-64 border border-gray-200 border-dashed rounded-lg cursor-pointer bg-white hover:border-gray-400">
           <div class="flex flex-row p-2 content-center">

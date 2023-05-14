@@ -24,15 +24,19 @@ const Navbar = () => {
             <li>
               <A
                 href="/"
-                class={`block py-2 pl-6 pr-1 hover:text-violet-600 ${isActive('/') ? 'text-black' : 'text-gray-400'}`}
+                class={`block py-2 pl-6 pr-1 hover:text-violet-600 ${
+                  isActive('/') ? 'text-black' : 'text-gray-400'
+                }`}
               >
-                Copilot  
+                Copilot
               </A>
             </li>
             <li>
               <A
                 href="/collections"
-                class={`block py-2 pr-1 hover:text-violet-600 ${isActive('/collections') ? 'text-black' : 'text-gray-400'}`}
+                class={`block py-2 pr-1 hover:text-violet-600 ${
+                  isActive('/collections') ? 'text-black' : 'text-gray-400'
+                }`}
               >
                 Collections
               </A>
@@ -40,7 +44,9 @@ const Navbar = () => {
             <li>
               <A
                 href="/brand"
-                class={`block py-2 pr-4 hover:text-violet-600 ${isActive('/brand') ? 'text-black' : 'text-gray-400'}`}
+                class={`block py-2 pr-4 hover:text-violet-600 ${
+                  isActive('/brand') ? 'text-black' : 'text-gray-400'
+                }`}
               >
                 Brand
               </A>
