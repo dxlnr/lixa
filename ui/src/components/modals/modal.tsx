@@ -3,6 +3,7 @@ import { Component, JSX, createSignal } from 'solid-js';
 type ModalProps = {
   children?: JSX.Element;
   button_text: string;
+  header?: string;
 };
 
 const Modal: Component<ModalProps> = (props) => {
@@ -28,18 +29,18 @@ const Modal: Component<ModalProps> = (props) => {
             }
           >
             <section class="relative flex justify-center items-center min-h-[calc(100%-1rem)] w-auto translate-y-[-100px] inset-0 bg-blur">
-              <div class="bg-white flex flex-col justify-center items-center rounded border-none shadow-xl">
-                <div class="flex flex-shrink-0 justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4">
+              <div class="bg-white flex flex-col justify-center items-center rounded border-none shadow-xl p-4">
+                <div class="w-full flex justify-between rounded-t-md border-b border-neutral-100 border-opacity-100 p-2">
                   <h5
                     class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
-                    id="exampleModalLabel"
+                    id="modalHeader"
                   >
-                    Modal title
+                    {props.header}
                   </h5>
 
                   <button
                     type="button"
-                    class="top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                    class="top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                     onClick={() => setIsOpen(false)}
                   >
                     <svg
@@ -59,9 +60,7 @@ const Modal: Component<ModalProps> = (props) => {
                   </button>
                 </div>
 
-                <div class="p-10 text-black">
-                  <p>This is a vertically centered modal.</p>
-                </div>
+                <div class="text-black">{props.children}</div>
               </div>
             </section>
           </div>

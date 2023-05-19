@@ -7,7 +7,7 @@ const Login: Component = () => {
     <div class="bg-cover h-screen ">
       <div class="grid lg:grid-cols-2 grid-cols-1">
         <LoginForm />
-        <div class="hidden lg:block bg-[url('./assets/bg.svg')]"> </div>
+        <div class="hidden lg:block bg-[url('/brandBackground.svg')]"> </div>
       </div>
     </div>
   );
