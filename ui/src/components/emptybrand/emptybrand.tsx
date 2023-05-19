@@ -12,7 +12,7 @@ const EmptyBrand: Component = () => {
             Your brands will appear here
           </p>
           <div class="text-white mx-auto">
-            <Modal button_text={"Create new Brand"} />
+            <Modal button_text={'Create new Brand'} />
           </div>
         </div>
       </div>
