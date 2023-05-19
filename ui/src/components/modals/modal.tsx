@@ -23,7 +23,6 @@ const Modal: Component<ModalProps> = (props) => {
           <div
             role="presentation"
             class="fixed left-0 top-0 h-full w-full overflow-y-auto z-50 backdrop-blur-lg"
-            onClick={() => setIsOpen(false)}
             onKeyPress={(e) =>
               (e.key || e.code) === 'Escape' ? setIsOpen(false) : null
             }

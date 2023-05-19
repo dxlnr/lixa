@@ -4,11 +4,12 @@ const BrandModalChild: Component = () => {
   return (
     <div>
       <div class="pb-2 px-4">
-        <div class="flex justify-center mb-8 md:mb-0">
+        <div class="flex justify-center mb-8 md:mb-0 mt-2">
           <img
             src="/undraw_design_team_re_gh2d.svg"
             class="w-80"
-            alt="Phone image" />
+            alt="Phone image"
+          />
         </div>
 
         <div class="mt-12">
@@ -28,10 +29,9 @@ const BrandModalChild: Component = () => {
               />
             </div>
             <div class="mt-10">
-
               <button
                 type="submit"
-                class="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-20 sm:px-40 py-3 text-center" 
+                class="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-20 sm:px-40 py-3 text-center"
               >
                 Create new Brand
               </button>
