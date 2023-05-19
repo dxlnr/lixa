@@ -6,9 +6,9 @@ import EmptyBrand from '../components/emptybrand/emptybrand';
 
 const Brand: Component = () => {
   return (
-    <div>     
+    <div>
       <Navbar />
-      <div class="m-auto">
+      <div class="flex items-stretch ">
         <EmptyBrand />
       </div>
     </div>
