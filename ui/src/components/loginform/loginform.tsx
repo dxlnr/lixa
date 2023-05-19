@@ -1,3 +1,4 @@
+import type { Component } from 'solid-js';
 import { A } from '@solidjs/router';
 
 const Login: Component = () => {
@@ -67,7 +68,7 @@ const Login: Component = () => {
                   id="email"
                   class="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter your email address"
-                  required=""
+                  required={true}
                 />
               </div>
               <div>
@@ -83,7 +84,7 @@ const Login: Component = () => {
                   id="password"
                   placeholder="••••••••"
                   class="border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
+                  required={true}
                 />
                 <div class="flex justify-end">
                   <A

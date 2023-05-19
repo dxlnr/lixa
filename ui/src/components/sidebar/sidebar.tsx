@@ -1,5 +1,4 @@
 import { createSignal } from 'solid-js';
-import { on } from 'solid-js/dom';
 
 import Gallery from '../../components/gallery/gallery';
 

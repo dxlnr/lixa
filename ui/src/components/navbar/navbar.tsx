@@ -1,12 +1,13 @@
 import { A } from '@solidjs/router';
 import { useLocation } from '@solidjs/router';
-import logo from '../../assets/logo4.svg';
-import pp from '../../assets/pp.jpg';
+
+import logo from '/logo4.svg';
+import pp from '/pp.jpg';
 
 const Navbar = () => {
   const location = useLocation();
 
-  const isActive = (url) => {
+  const isActive = (url: string) => {
     return location.pathname === url;
   };
 
