@@ -1,5 +1,26 @@
 # Database
 
+## MongoDB
+
+```bash
+# After installing MongoDB run it 
+sudo systemctl start mongod
+# Verify that MongoDB is up and running.
+sudo systemctl status mongod
+# Stop MongoDB 
+sudo systemctl stop mongod
+
+# Using MongoDB
+mongosh
+
+# MongoDB GUI (Compass)
+mongodb-compass
+```
+
+Getting started with [MongoDB](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/) on Ubuntu.
+
+
+
 ## Database Options
 
 #### Relational-Database Paradigm
