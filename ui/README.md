@@ -21,8 +21,8 @@ Login (account) -> collections -> brand input -> creation tool
 
 ## Website Design 
 
-[OpenAI](https://openai.com/product/dall-e-2)
-[Qonto](https://qonto.com/en)
+- [OpenAI](https://openai.com/product/dall-e-2)
+- [Qonto](https://qonto.com/en)
 
 
 ## Website Performance Metrics
@@ -43,5 +43,10 @@ Testing Tool:
 - [Unlighthouse](https://unlighthouse.dev/)
 
 ## Tools 
+
 - [Astro](https://astro.build/)
 - [Solidjs](https://www.solidjs.com/). Find **solidjs** on [Discord](https://discord.com/invite/solidjs)
+
+## UI Components
+- [erakiui](https://merakiui.com/)
+- Component [Modal](https://github.com/AdamAnSubtractM/SolidJS-Modal) in SolidJS
