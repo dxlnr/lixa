@@ -1,6 +1,5 @@
 ## UI 
 
-
 ```bash
 npm install 
 # Run the website in dev mode.
@@ -21,8 +20,12 @@ You can deploy the `dist` folder to any static host provider (netlify, surge, no
 - Login
 - Account overview with some bare settings
 - Collections (created content to revisit and further refine) 
-- Brand 
-- Copilot: Content Creation tool 
+- Brand
+    - Create/Set Brand which will be designed as carousel (explanation text of why & how this data is used, basics (name, website, location, industry),
+    social media links & brand logo)
+    - Brand Overview (Simple & clean overview of the brand a user specified)
+    
+- Copilot: Content Creation Tool : This will be image only for the beginning & for one channel basically (instagram)
 
 ## Website Design 
 

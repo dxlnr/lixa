@@ -2,7 +2,7 @@ import type { Component } from 'solid-js';
 
 import Navbar from '../components/navbar/navbar';
 import Collect from '../components/collect/collect';
-import Card from '../components/card/card';
+import Card from '../components/cards/card';
 
 const Collections: Component = () => {
   return (
