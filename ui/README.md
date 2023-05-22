@@ -17,7 +17,12 @@ You can deploy the `dist` folder to any static host provider (netlify, surge, no
 
 ## Layout 
 
-Login (account) -> collections -> brand input -> creation tool 
+### Pages
+- Login
+- Account overview with some bare settings
+- Collections (created content to revisit and further refine) 
+- Brand 
+- Copilot: Content Creation tool 
 
 ## Website Design 
 

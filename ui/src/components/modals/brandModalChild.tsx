@@ -30,7 +30,7 @@ const BrandModalChild: Component = () => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -58,7 +58,17 @@ const BrandModalChild: Component = () => {
                 onInput={handleChange}
               />
             </div>
-            <div class="mt-8">
+            <div class="mt-6">
+              <input
+                class="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-fuchsia-300"
+                type=""
+                placeholder="website"
+                name="website"
+                id="website"
+                onInput={handleChange}
+              />
+            </div>
+            <div class="mt-6">
               <input
                 class="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-fuchsia-300"
                 type=""
@@ -68,7 +78,7 @@ const BrandModalChild: Component = () => {
                 onInput={handleChange}
               />
             </div>
-            <div class="mt-8">
+            <div class="mt-6">
               <input
                 class="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-fuchsia-300"
                 type=""
@@ -78,6 +88,17 @@ const BrandModalChild: Component = () => {
                 onInput={handleChange}
               />
             </div>
+            <div class="mt-6">
+              <input
+                class="w-full py-2 border-b border-gray-300 focus:outline-none focus:border-fuchsia-300"
+                type=""
+                placeholder="link to social profile"
+                name="social"
+                id="social"
+                onInput={handleChange}
+              />
+            </div>
+
             <div class="mt-10">
               <button
                 type="submit"
