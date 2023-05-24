@@ -2,8 +2,9 @@ import { Component } from 'solid-js';
 
 import '../slider/slider.css';
 import { Slider, createSlider } from '../slider';
-// import { CreateBrandFormGeneral } from "../brandForms/general";
 import CreateBrandFormGeneral from '../brandForms/general';
+import CreateBrandFormSocials from '../brandForms/socials';
+import CreateBrandFormLogo from '../brandForms/logo';
 
 const Carousel: Component = () => {
   const [slider, { next, prev }] = createSlider();
@@ -14,11 +15,11 @@ const Carousel: Component = () => {
         <div class="justify-center items-center">
           <CreateBrandFormGeneral />
         </div>
-        <div class="h-1/2 justify-center items-center text-xl bg-slate-700 text-white">
-          2
+        <div class="justify-center items-center">
+          <CreateBrandFormSocials />
         </div>
-        <div class="h-1/2 justify-center items-center text-xl bg-slate-900 text-white">
-          3
+        <div class="justify-center items-center">
+          <CreateBrandFormLogo />
         </div>
       </div>
       <div>
@@ -31,7 +32,7 @@ const Carousel: Component = () => {
           <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg
               aria-hidden="true"
-              class="w-5 h-5 text-black sm:w-6 sm:h-6 dark:text-gray-800"
+              class="w-5 h-5 text-gray-400 sm:w-6 sm:h-6 dark:text-gray-800"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -56,7 +57,7 @@ const Carousel: Component = () => {
           <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
             <svg
               aria-hidden="true"
-              class="w-5 h-5 text-black sm:w-6 sm:h-6 dark:text-gray-800"
+              class="w-5 h-5 text-gray-400 sm:w-6 sm:h-6 dark:text-gray-800"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
