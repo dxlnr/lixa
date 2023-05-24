@@ -1,4 +1,5 @@
 import { Component, createSignal } from 'solid-js';
+import { useNavigate } from '@solidjs/router';
 
 import '../slider/slider.css';
 import { createSlider } from '../slider';
@@ -6,10 +7,10 @@ import CreateBrandFormGeneral from '../brandForms/general';
 import CreateBrandFormSocials from '../brandForms/socials';
 import CreateBrandFormLogo from '../brandForms/logo';
 
-
 const Carousel: Component = () => {
   const [slider, { next, prev }] = createSlider();
   const [formData, setFormData] = createSignal({});
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
@@ -29,6 +30,7 @@ const Carousel: Component = () => {
       if (response.ok) {
         // Request was successful
         console.log('POST request succeeded');
+        navigate('/brand');
       } else {
         // Request failed
         console.error('POST request failed');
@@ -50,7 +52,7 @@ const Carousel: Component = () => {
           <CreateBrandFormGeneral setFormData={setFormData} />
         </div>
         <div class="justify-center items-center">
-          <CreateBrandFormSocials setFormData={setFormData}/>
+          <CreateBrandFormSocials setFormData={setFormData} />
         </div>
         <div class="justify-center items-center">
           <CreateBrandFormLogo handleSubmit={handleSubmit} />
