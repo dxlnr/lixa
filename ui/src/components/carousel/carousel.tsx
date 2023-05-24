@@ -1,25 +1,59 @@
-import { Component } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 
 import '../slider/slider.css';
-import { Slider, createSlider } from '../slider';
+import { createSlider } from '../slider';
 import CreateBrandFormGeneral from '../brandForms/general';
 import CreateBrandFormSocials from '../brandForms/socials';
 import CreateBrandFormLogo from '../brandForms/logo';
 
+
 const Carousel: Component = () => {
   const [slider, { next, prev }] = createSlider();
+  const [formData, setFormData] = createSignal({});
+
+  const handleSubmit = async () => {
+    try {
+      // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
+      const response = await fetch(
+        'http://127.0.0.1:5000/api/brand/create_brand',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+          body: JSON.stringify(formData()),
+        }
+      );
+
+      if (response.ok) {
+        // Request was successful
+        console.log('POST request succeeded');
+      } else {
+        // Request failed
+        console.error('POST request failed');
+      }
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  };
+
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <>
       <div use:slider>
         <div class="justify-center items-center">
-          <CreateBrandFormGeneral />
+          <CreateBrandFormGeneral setFormData={setFormData} />
         </div>
         <div class="justify-center items-center">
-          <CreateBrandFormSocials />
+          <CreateBrandFormSocials setFormData={setFormData}/>
         </div>
         <div class="justify-center items-center">
-          <CreateBrandFormLogo />
+          <CreateBrandFormLogo handleSubmit={handleSubmit} />
         </div>
       </div>
       <div>

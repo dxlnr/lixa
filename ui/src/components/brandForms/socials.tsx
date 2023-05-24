@@ -1,6 +1,11 @@
 import { Component } from 'solid-js';
 
-const CreateBrandFormSocials: Component = () => {
+const CreateBrandFormSocials: Component = (props) => {
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+    props.setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div class="container m-auto p-8 rounded-lg">
       <div class="flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200">
@@ -29,6 +34,7 @@ const CreateBrandFormSocials: Component = () => {
           class="py-3 px-1 block w-full outline-none text-sm focus:border-violet-400"
           placeholder="instagram"
           aria-describedby="hs-inline-input-helper-text"
+          onInput={handleChange}
         />
       </div>
 
@@ -72,6 +78,7 @@ const CreateBrandFormSocials: Component = () => {
           class="py-3 px-1 block w-full outline-none text-sm focus:border-violet-400"
           placeholder="tiktok"
           aria-describedby="hs-inline-input-helper-text"
+          onInput={handleChange}
         />
       </div>
 
@@ -104,6 +111,7 @@ const CreateBrandFormSocials: Component = () => {
           class="py-3 px-1 block w-full outline-none text-sm focus:border-violet-400"
           placeholder="twitter"
           aria-describedby="hs-inline-input-helper-text"
+          onInput={handleChange}
         />
       </div>
     </div>

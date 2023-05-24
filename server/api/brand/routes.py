@@ -1,4 +1,6 @@
 """Brand API Endpoints"""
+from collections import defaultdict
+
 from flask import Blueprint, jsonify, request
 from flask_cors import cross_origin
 
@@ -12,7 +14,12 @@ cbrands = db["brands"]
 @cross_origin(supports_credentials=True)
 def create_brand():
     r"""Instantiates new brand for user and writes it to mongodb table."""
-    j = request.get_json()
-    b = {"name": j["name"], "industry": j["industry"], "location": j["location"]}
+    try:
+        j = request.get_json()
+    except:
+        pass
+    b = defaultdict(lambda: "")
+    for k, v in j.items():
+        b[k] = v
     cbrands.insert_one(b)
     return ""

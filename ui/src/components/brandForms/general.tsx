@@ -1,6 +1,11 @@
 import { Component } from 'solid-js';
 
-const CreateBrandFormGeneral: Component = () => {
+const CreateBrandFormGeneral: Component = (props) => {
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+    props.setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div class="container m-auto p-8 rounded-lg">
       <div class="flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200">
@@ -136,6 +141,7 @@ const CreateBrandFormGeneral: Component = () => {
           class="py-3 px-1 block w-full outline-none text-sm focus:border-violet-400"
           placeholder="brand name"
           aria-describedby="hs-inline-input-helper-text"
+          onInput={handleChange}
         />
       </div>
       <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus:border-b focus:border-violet-400">
@@ -166,6 +172,7 @@ const CreateBrandFormGeneral: Component = () => {
           class="py-3 px-1 block w-full outline-none text-sm"
           placeholder="location"
           aria-describedby="hs-inline-input-helper-text"
+          onInput={handleChange}
         />
       </div>
       <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus:border-b focus:border-violet-400">
@@ -200,6 +207,7 @@ const CreateBrandFormGeneral: Component = () => {
           class="py-3 px-1 block w-full outline-none text-sm "
           placeholder="profession"
           aria-describedby="hs-inline-input-helper-text"
+          onInput={handleChange}
         />
       </div>
 
@@ -236,6 +244,7 @@ const CreateBrandFormGeneral: Component = () => {
           class="py-3 px-1 block w-full outline-none text-sm focus:border-violet-400"
           placeholder="website"
           aria-describedby="hs-inline-input-helper-text"
+          onInput={handleChange}
         />
       </div>
     </div>
