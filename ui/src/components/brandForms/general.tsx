@@ -22,9 +22,7 @@ const CreateBrandFormGeneral: Component = (props) => {
         }
       >
         <svg
-          class={
-            'w-5 h-5 ' + (props.error() ? 'text-red-600' : 'text-gray-500')
-          }
+          class="w-5 h-5"
           width="160px"
           height="160px"
           viewBox="0 0 16 16"
@@ -154,7 +152,7 @@ const CreateBrandFormGeneral: Component = (props) => {
           id="name"
           class={
             'py-3 px-1 block w-full outline-none text-sm ' +
-            (props.error() ? 'text-red-600' : 'text-gray-500')
+            (props.error() ? 'placeholder-red-600' : '')
           }
           placeholder="brand name"
           aria-describedby="hs-inline-input-helper-text"

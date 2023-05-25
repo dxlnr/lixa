@@ -28,4 +28,4 @@ MANIFEST
 
 # model zoo
 zoo/models/*
-
+logos/*

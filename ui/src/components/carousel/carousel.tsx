@@ -10,6 +10,7 @@ import CreateBrandFormLogo from '../brandForms/logo';
 const Carousel: Component = () => {
   const [slider, { next, prev }] = createSlider();
   const [formData, setFormData] = createSignal({});
+  const [logo, setLogo] = createSignal(null);
   const [error, setError] = createSignal(false);
   const navigate = useNavigate();
 
@@ -30,24 +31,43 @@ const Carousel: Component = () => {
             body: JSON.stringify(formData()),
           }
         );
-
         if (response.ok) {
-          // Request was successful
           console.log('POST request succeeded');
-          navigate('/brand');
+          // navigate('/brand');
         } else {
-          // Request failed
           console.error('POST request failed');
         }
       } catch (error) {
         console.error('An error occurred:', error);
       }
+      if (logo) {
+        const logoData = new FormData();
+        var f = logo();
+        logoData.append('im', f);
+        try {
+          // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
+          const rb = await fetch(
+            `http://127.0.0.1:5000/api/brand/brand_logo_upload/${
+              formData()['name']
+            }`,
+            {
+              method: 'POST',
+              body: logoData,
+            }
+          );
+          if (rb.ok) {
+            console.log('Image upload succeeded');
+            navigate('/brand');
+          } else {
+            console.error('Image upload failed');
+          }
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+      } else {
+        navigate('/brand');
+      }
     }
-  };
-
-  const handleChange = (event: any) => {
-    const { name, value } = event.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -64,7 +84,12 @@ const Carousel: Component = () => {
           <CreateBrandFormSocials setFormData={setFormData} />
         </div>
         <div class="justify-center items-center">
-          <CreateBrandFormLogo handleSubmit={handleSubmit} error={error} />
+          <CreateBrandFormLogo
+            logo={logo}
+            setLogo={setLogo}
+            handleSubmit={handleSubmit}
+            error={error}
+          />
         </div>
       </div>
       <div>
