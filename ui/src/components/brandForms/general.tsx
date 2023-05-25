@@ -6,11 +6,25 @@ const CreateBrandFormGeneral: Component = (props) => {
     props.setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleChangeRequired = (event: any) => {
+    // reset the error as user tries to adjust the input field.
+    props.setError(false);
+    const { name, value } = event.target;
+    props.setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
     <div class="container m-auto p-8 rounded-lg">
-      <div class="flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200">
+      <div
+        class={
+          'flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b focus-within:border-b focus-within:border-violet-400 ' +
+          (props.error() ? 'border-red-600' : 'border-gray-200')
+        }
+      >
         <svg
-          class="w-5 h-5 text-gray-500"
+          class={
+            'w-5 h-5 ' + (props.error() ? 'text-red-600' : 'text-gray-500')
+          }
           width="160px"
           height="160px"
           viewBox="0 0 16 16"
@@ -138,11 +152,46 @@ const CreateBrandFormGeneral: Component = (props) => {
           type="text"
           name="name"
           id="name"
-          class="py-3 px-1 block w-full outline-none text-sm focus:border-violet-400"
+          class={
+            'py-3 px-1 block w-full outline-none text-sm ' +
+            (props.error() ? 'text-red-600' : 'text-gray-500')
+          }
           placeholder="brand name"
           aria-describedby="hs-inline-input-helper-text"
-          onInput={handleChange}
+          onInput={handleChangeRequired}
         />
+        {props.error() && (
+          <>
+            <p class="text-xs text-red-600">required</p>
+            <svg
+              class="h-10 w-10"
+              fill="#BE1931"
+              version="1.1"
+              id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 100 100"
+              enable-background="new 0 0 100 100"
+              xml:space="preserve"
+              stroke="#BE1931"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {' '}
+                <g>
+                  {' '}
+                  <path d="M45.764,68.114c0,2.448,1.984,4.433,4.434,4.433s4.434-1.984,4.434-4.433c0-2.451-1.984-4.435-4.434-4.435 S45.764,65.663,45.764,68.114z"></path>{' '}
+                  <path d="M52.5,54.881v-23c0-1.104-0.896-2-2-2s-2,0.896-2,2v23c0,1.104,0.896,2,2,2S52.5,55.985,52.5,54.881z"></path>{' '}
+                </g>{' '}
+              </g>
+            </svg>
+          </>
+        )}
       </div>
       <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus:border-b focus:border-violet-400">
         <svg

@@ -14,11 +14,7 @@ const CreateBrandFormLogo: Component = (props) => {
           type="file"
           name="file-input-medium"
           id="file-input-medium"
-          class="block w-full lg:w-3/5 border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400
-    file:bg-transparent file:border-0
-    file:bg-black file:text-white file:mr-4 file:font-semibold
-    file:py-3 file:px-4 
-    dark:file:bg-gray-700 dark:file:text-gray-400"
+          class="block w-full lg:w-3/5 border border-gray-200 shadow-sm rounded-md text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 file:border-0 file:bg-black file:text-white file:mr-4 file:font-semibold file:py-3 file:px-4"
         />
         <p
           class="text-sm text-gray-500 mt-2 hidden lg:block"

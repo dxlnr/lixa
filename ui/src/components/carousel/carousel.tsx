@@ -10,33 +10,38 @@ import CreateBrandFormLogo from '../brandForms/logo';
 const Carousel: Component = () => {
   const [slider, { next, prev }] = createSlider();
   const [formData, setFormData] = createSignal({});
+  const [error, setError] = createSignal(false);
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
-    try {
-      // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
-      const response = await fetch(
-        'http://127.0.0.1:5000/api/brand/create_brand',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-          },
-          body: JSON.stringify(formData()),
-        }
-      );
+    if (formData()['name'] === undefined || formData()['name'] === '') {
+      setError(true);
+    } else {
+      try {
+        // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
+        const response = await fetch(
+          'http://127.0.0.1:5000/api/brand/create_brand',
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+            },
+            body: JSON.stringify(formData()),
+          }
+        );
 
-      if (response.ok) {
-        // Request was successful
-        console.log('POST request succeeded');
-        navigate('/brand');
-      } else {
-        // Request failed
-        console.error('POST request failed');
+        if (response.ok) {
+          // Request was successful
+          console.log('POST request succeeded');
+          navigate('/brand');
+        } else {
+          // Request failed
+          console.error('POST request failed');
+        }
+      } catch (error) {
+        console.error('An error occurred:', error);
       }
-    } catch (error) {
-      console.error('An error occurred:', error);
     }
   };
 
@@ -49,7 +54,11 @@ const Carousel: Component = () => {
     <>
       <div use:slider>
         <div class="justify-center items-center">
-          <CreateBrandFormGeneral setFormData={setFormData} />
+          <CreateBrandFormGeneral
+            setFormData={setFormData}
+            error={error}
+            setError={setError}
+          />
         </div>
         <div class="justify-center items-center">
           <CreateBrandFormSocials setFormData={setFormData} />
