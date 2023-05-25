@@ -24,13 +24,23 @@ const CreateBrandFormLogo: Component = (props) => {
         </p>
       </div>
       <div class="flex justify-center mb-10">
-        <button
-          type="submit"
-          class="text-white bg-black hover:bg-opacity-50 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-20 sm:px-40 py-3 text-center"
-          onClick={props.handleSubmit}
-        >
-          create new brand
-        </button>
+        <div>
+          <button
+            type="submit"
+            class={
+              'text-white bg-black hover:bg-opacity-50 focus:outline-none font-medium rounded-lg text-sm px-20 sm:px-40 py-3 text-center ' +
+              (props.error() ? 'transition duration-500 focus:bg-red-600' : '')
+            }
+            onClick={props.handleSubmit}
+          >
+            create new brand
+          </button>
+          {props.error() && (
+            <p class="text-xs text-red-600 py-2">
+              Please, make sure all required fields are filled.
+            </p>
+          )}
+        </div>
       </div>
     </>
   );

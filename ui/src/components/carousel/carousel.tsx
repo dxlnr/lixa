@@ -64,7 +64,7 @@ const Carousel: Component = () => {
           <CreateBrandFormSocials setFormData={setFormData} />
         </div>
         <div class="justify-center items-center">
-          <CreateBrandFormLogo handleSubmit={handleSubmit} />
+          <CreateBrandFormLogo handleSubmit={handleSubmit} error={error} />
         </div>
       </div>
       <div>
