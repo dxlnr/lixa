@@ -10,7 +10,8 @@ const Gallery = () => {
         prompt: prompt,
       };
       const response = await fetch(
-        'http://192.168.88.18:5000/api/copilot/prompt',
+        // 'http://192.168.88.18:5000/api/copilot/prompt',
+        'http://127.0.0.1:5000/api/copilot/prompt',
         {
           method: 'POST',
           headers: {

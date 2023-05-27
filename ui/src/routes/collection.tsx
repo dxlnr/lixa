@@ -1,10 +1,10 @@
-import type { Component } from 'solid-js';
+import { Component } from 'solid-js';
 
 import Navbar from '../components/navbar/navbar';
 import Collect from '../components/collect/collect';
 import Card from '../components/cards/card';
 
-const Collections: Component = () => {
+const Collection: Component = () => {
   return (
     <>
       <Navbar />
@@ -21,4 +21,4 @@ const Collections: Component = () => {
   );
 };
 
-export default Collections;
+export default Collection;

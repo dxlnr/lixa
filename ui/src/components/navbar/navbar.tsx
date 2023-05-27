@@ -34,12 +34,12 @@ const Navbar = () => {
             </li>
             <li>
               <A
-                href="/collections"
+                href="/collection"
                 class={`block py-2 pr-1 hover:text-violet-600 ${
-                  isActive('/collections') ? 'text-black' : 'text-gray-400'
+                  isActive('/collection') ? 'text-black' : 'text-gray-400'
                 }`}
               >
-                Collections
+                Collection
               </A>
             </li>
             <li>

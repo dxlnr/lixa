@@ -5,6 +5,7 @@ import { createSignal, onCleanup, onMount } from 'solid-js';
 
 import Navbar from '../components/navbar/navbar';
 import EmptyBrand from '../components/emptybrand/emptybrand';
+import EmptyBrandLight from '../components/emptybrand/emptyBrandLight';
 
 const Brand: Component = () => {
   const [userData, setUserData] = createSignal(null);
@@ -32,8 +33,8 @@ const Brand: Component = () => {
     <>
       <Navbar />
       {userData() === null ? (
-        <div class="flex items-stretch ">
-          <EmptyBrand />
+        <div class="h-screen flex items-center justify-center">
+          <EmptyBrandLight />
         </div>
       ) : (
         <div class="w-full px-6 py-6 mx-auto loopple-min-height-78vh text-slate-500">
