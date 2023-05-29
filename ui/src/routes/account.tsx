@@ -1,12 +1,14 @@
 import type { Component } from 'solid-js';
 
 import Navbar from '../components/navbar/navbar';
+import BrandSocialCard from '../components/cards/brandSocialCard';
 
 const Account: Component = () => {
-  return ( 
+  return (
     <>
       <Navbar />
-      <div>
+      <div class="flex flex-col items-center">
+        <BrandSocialCard />
       </div>
     </>
   );

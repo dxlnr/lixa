@@ -55,16 +55,18 @@ const Navbar = () => {
           </ul>
         </div>
         <div class="flex items-center md:order-2">
-          <button
-            type="button"
-            class="flex mr-3 text-sm bg-gray-800 rounded-full hover:opacity-50 md:mr-0"
-            id="user-menu-button"
-            aria-expanded="false"
-            data-dropdown-toggle="user-dropdown"
-            data-dropdown-placement="bottom"
-          >
-            <img class="w-9 h-9 rounded-full" src={pp} alt="user photo" />
-          </button>
+          <A href="/account">
+            <button
+              type="button"
+              class="flex mr-3 text-sm bg-gray-800 rounded-full hover:opacity-50 md:mr-0"
+              id="user-menu-button"
+              aria-expanded="false"
+              data-dropdown-toggle="user-dropdown"
+              data-dropdown-placement="bottom"
+            >
+              <img class="w-9 h-9 rounded-full" src={pp} alt="user photo" />
+            </button>
+          </A>
         </div>
       </div>
     </nav>
