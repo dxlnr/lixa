@@ -169,7 +169,7 @@ const BrandSocialCard: Component = () => {
                 </g>
               </svg>
               <div class="pl-3">
-                <div class="text-base font-semibold">Thomas Lean</div>
+                <div class="text-base font-semibold">Twitter</div>
                 <div class="font-normal text-gray-500">thomes@flowbite.com</div>
               </div>
             </th>
