@@ -12,9 +12,7 @@ const Account: Component = () => {
         <div class="col-span-2">
           <BrandCard />
         </div>
-        <div class="col-start-2">
         <BrandSocialCard />
-        </div>
       </div>
     </>
   );
