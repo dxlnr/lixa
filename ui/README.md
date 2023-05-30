@@ -58,3 +58,8 @@ Testing Tool:
 ## UI Components
 - [erakiui](https://merakiui.com/)
 - Component [Modal](https://github.com/AdamAnSubtractM/SolidJS-Modal) in SolidJS
+
+## Production Ready Application
+Auth
+ - [Serverless Functions](https://youtu.be/pAzqscDx580) to grab the .env variables
+ - [Hiding API keys with a nodejs relay](https://www.youtube.com/watch?v=uk9pviyvrtg) 

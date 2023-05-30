@@ -52,3 +52,11 @@ def brand_logo_upload(brand_name: str) -> (str, int):
             return "No Image found.", 404
 
         return "Image Upload Successfully", 200
+
+
+@brand_blueprint.route("/get_brand", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_brand():
+    r"""Instantiates new brand for user and writes it to mongodb table."""
+    x = cbrands.find_one()
+

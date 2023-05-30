@@ -8,11 +8,13 @@ const Account: Component = () => {
   return (
     <>
       <Navbar />
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 mt-4">
         <div class="col-span-2">
           <BrandCard />
         </div>
-        <BrandSocialCard />
+        <div class="col-start-2">
+          <BrandSocialCard />
+        </div>
       </div>
     </>
   );

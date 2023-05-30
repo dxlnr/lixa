@@ -33,6 +33,7 @@
     "postcss-nested": "^6.0.1",
     "solid-app-router": "^0.4.2",
     "solid-js": "^1.6.10",
-    "solid-start": "^0.2.26"
+    "solid-start": "^0.2.26",
+    "tslib": "^2.5.2"
   }
 }
