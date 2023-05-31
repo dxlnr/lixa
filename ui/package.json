@@ -26,6 +26,7 @@
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
+    "@auth0/auth0-spa-js": "^2.0.6",
     "@solid-primitives/utils": "^6.2.0",
     "@solidjs/router": "^0.8.2",
     "keen-slider": "^6.8.5",

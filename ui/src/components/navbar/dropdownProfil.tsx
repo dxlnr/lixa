@@ -1,31 +1,49 @@
+import { Component, createSignal } from 'solid-js';
 import { useAuth0 } from '../solid-auth0';
 
-const DropdownProfil = () => {
+const DropdownProfil: Component = () => {
   const auth = useAuth0();
+  const [isOpen, setIsOpen] = createSignal(false);
+
+  function toggleDropdown() {
+    setIsOpen(!isOpen());
+  }
 
   return (
-    <>
-      {!auth?.isAuthenticated() && (
-        <div
-          class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-          id="user-dropdown"
-        >
+  <div class={"relative inline-block text-left " + (isOpen() ? 'bg-white w-64' : '')}>
+    <div class={(isOpen() ? 'flex justify-end shadow-lg ring-1 ring-black ring-opacity-5 rounded-t-md' : '')}>
+      <button
+        type="button"
+        class="flex rounded-full hover:opacity-50 md:mr-0 p-1"
+        id="user-menu-button"
+        onClick={toggleDropdown}
+        aria-expanded="false"
+        data-dropdown-toggle="user-dropdown"
+        data-dropdown-placement="bottom"
+      >
+        <img class="w-9 h-9 rounded-full" src="/pp.jpg" alt="user photo" />
+      </button>
+      </div>
+        { isOpen() && (
+        <div class="absolute right-0 z-10 w-64 origin-top-right divide-y divide-gray-100 rounded-b-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
           <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900 dark:text-white">
+            <span class="block text-sm text-gray-900">
               Bonnie Green
             </span>
-            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">
+            <span class="block text-sm text-gray-500 truncate">
               name@flowbite.com
             </span>
           </div>
-          <ul class="py-2" aria-labelledby="user-menu-button">
+          <ul class="px-2 py-3" aria-labelledby="user-menu-button">
             <li>
               <button
+                class="flex text-sm items-center"
                 onClick={() =>
                   auth?.logout({ returnTo: window.location.origin })
                 }
               >
                 <svg
+                  class="h-6 w-6 p-1"
                   fill="#000000"
                   width="160px"
                   height="160px"
@@ -48,7 +66,7 @@ const DropdownProfil = () => {
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
