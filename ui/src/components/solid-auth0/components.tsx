@@ -1,4 +1,4 @@
-import { createAuth0Client } from '@auth0/auth0-spa-js';
+import { createAuth0Client, RedirectLoginOptions, LogoutOptions } from '@auth0/auth0-spa-js';
 import {
   createContext,
   useContext,
@@ -32,12 +32,14 @@ export function Auth0(props: Auth0Props) {
     },
     props
   );
-
+  
   const auth0ClientPromise = createAuth0Client({
     domain: props.domain,
-    client_id: props.clientId,
-    audience: props.audience,
-    redirect_uri: props.loginRedirectUri,
+    clientId: props.clientId,
+    authorizationParams: {
+      audience: props.audience,
+      redirect_uri: props.loginRedirectUri,
+    },
   });
 
   const [isAuthenticated, setIsAuthenticated] = createSignal<
@@ -71,15 +73,19 @@ export function Auth0(props: Auth0Props) {
         async loginWithRedirect(options?: RedirectLoginOptions) {
           const client = await auth0ClientPromise;
           client.loginWithRedirect({
-            redirect_uri: props.loginRedirectUri,
-            ...options,
+            authorizationParams: {
+              redirect_uri: props.loginRedirectUri,
+              ...options,
+            }
           });
         },
         async logout(options?: LogoutOptions) {
           const client = await auth0ClientPromise;
           client.logout({
-            returnTo: props.logoutRedirectUri,
-            ...options,
+            logoutParams: {
+              returnTo: props.logoutRedirectUri,
+              ...options
+            }
           });
         },
         async getToken() {

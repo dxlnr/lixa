@@ -1,5 +1,6 @@
 import type { Component } from 'solid-js';
 import { A } from '@solidjs/router';
+import LoginButton from '../buttons/loginButton';
 
 const Login: Component = () => {
   return (
@@ -101,6 +102,7 @@ const Login: Component = () => {
               >
                 Sign in
               </button>
+              <LoginButton />
 
               <div class="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300" />
 

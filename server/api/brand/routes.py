@@ -59,4 +59,3 @@ def brand_logo_upload(brand_name: str) -> (str, int):
 def get_brand():
     r"""Instantiates new brand for user and writes it to mongodb table."""
     x = cbrands.find_one()
-

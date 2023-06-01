@@ -10,28 +10,43 @@ const DropdownProfil: Component = () => {
   }
 
   return (
-  <div class={"relative inline-block text-left " + (isOpen() ? 'bg-white w-64' : '')}>
-    <div class={(isOpen() ? 'flex justify-end shadow-lg ring-1 ring-black ring-opacity-5 rounded-t-md' : '')}>
-      <button
-        type="button"
-        class="flex rounded-full hover:opacity-50 md:mr-0 p-1"
-        id="user-menu-button"
-        onClick={toggleDropdown}
-        aria-expanded="false"
-        data-dropdown-toggle="user-dropdown"
-        data-dropdown-placement="bottom"
+    <div
+      class={
+        'relative inline-block text-left ' + (isOpen() ? 'bg-white w-64' : '')
+      }
+    >
+      <div
+        class={
+          isOpen()
+            ? 'flex justify-end shadow-lg ring-1 ring-black ring-opacity-5 rounded-t-md'
+            : ''
+        }
       >
-        <img class="w-9 h-9 rounded-full" src="/pp.jpg" alt="user photo" />
-      </button>
+        <button
+          type="button"
+          class="flex rounded-full hover:opacity-50 md:mr-0 p-1"
+          id="user-menu-button"
+          onClick={toggleDropdown}
+        >
+          <img
+            class="w-9 h-9 rounded-full"
+            src={auth?.user.picture}
+            alt={auth?.user.name}
+          />
+        </button>
       </div>
-        { isOpen() && (
-        <div class="absolute right-0 z-10 w-64 origin-top-right divide-y divide-gray-100 rounded-b-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+      {isOpen() && (
+        <div
+          class="absolute right-0 z-10 w-64 origin-top-right divide-y divide-gray-100 rounded-b-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabindex="-1"
+        >
           <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900">
-              Bonnie Green
-            </span>
+            <span class="block text-sm text-gray-900">{auth?.user.name}</span>
             <span class="block text-sm text-gray-500 truncate">
-              name@flowbite.com
+              {auth?.user.email}
             </span>
           </div>
           <ul class="px-2 py-3" aria-labelledby="user-menu-button">
