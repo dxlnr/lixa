@@ -4,9 +4,13 @@ from dataclasses import dataclass
 
 
 @dataclass
-class DBEnv:
+class Env:
     MONGODB_USER_NAME: str = "dillner"
     MONGODB_USER_PW: str = ""
+    AUTH0_DOMAIN: str = "lixa.eu.auth0.com"
+    AUTH0_CLIENT_ID: str = ""
+    AUTH0_CLIENT_SECRET: str = ""
+    AUTH0_SECRET_KEY: str = ""
 
     def __setitem__(self, key, value):
         """."""

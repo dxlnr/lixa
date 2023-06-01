@@ -1,3 +1,4 @@
+Authlib
 black
 flask
 flask-cors

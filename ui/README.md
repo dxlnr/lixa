@@ -63,3 +63,6 @@ Testing Tool:
 Auth
  - [Serverless Functions](https://youtu.be/pAzqscDx580) to grab the .env variables
  - [Hiding API keys with a nodejs relay](https://www.youtube.com/watch?v=uk9pviyvrtg) 
+
+## Additional
+- https://www.youtube.com/watch?v=xiowCksSKpk
