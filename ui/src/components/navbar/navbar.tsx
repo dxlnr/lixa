@@ -23,12 +23,12 @@ const Navbar: Component = () => {
           <ul class="flex flex-col activate:bg-blue-600 font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
             <li>
               <A
-                href="/"
+                href="/copilot"
                 class={`block py-2 pl-6 pr-1 hover:text-violet-600 ${
-                  isActive('/') ? 'text-black' : 'text-gray-400'
+                  isActive('/copilot') ? 'text-black' : 'text-gray-400'
                 }`}
               >
-                Copilot
+                copilot
               </A>
             </li>
             <li>
@@ -38,7 +38,7 @@ const Navbar: Component = () => {
                   isActive('/collection') ? 'text-black' : 'text-gray-400'
                 }`}
               >
-                Collection
+                collection
               </A>
             </li>
             <li>
@@ -48,7 +48,7 @@ const Navbar: Component = () => {
                   isActive('/brand') ? 'text-black' : 'text-gray-400'
                 }`}
               >
-                Brand
+                brand
               </A>
             </li>
           </ul>

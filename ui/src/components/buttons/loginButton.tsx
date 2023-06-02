@@ -5,6 +5,17 @@ import { useAuth0 } from '../solid-auth0';
 const LoginButton: Component = () => {
   const auth = useAuth0();
 
+  // const handleLogin = async () => {
+  //   await auth?.loginWithRedirect({
+  //     appState: {
+  //       returnTo: "/profile",
+  //     },
+  //     authorizationParams: {
+  //       prompt: "login",
+  //     },
+  //   });
+  // };
+
   return (
     <>
       {!auth?.isAuthenticated() && (
