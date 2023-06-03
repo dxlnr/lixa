@@ -3,7 +3,8 @@ import { Router } from '@solidjs/router';
 
 import './index.css';
 import App from './App';
-import { Auth0Provider } from "./auth0-provider";
+// import { Auth0Provider } from "./components/auth0-solidjs";
+import Auth0ProviderWithNavigation from "./auth0-provider";
 
 const root = document.getElementById('root');
 
@@ -14,9 +15,9 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 render(
   () => (
     <Router>
-      <Auth0Provider>
+      <Auth0ProviderWithNavigation>
         <App />
-      </Auth0Provider>
+      </Auth0ProviderWithNavigation>
     </Router>
   ),
   root!

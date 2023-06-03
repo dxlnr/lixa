@@ -1,6 +1,8 @@
 import { Component, lazy } from 'solid-js';
 import { Routes, Route } from '@solidjs/router';
 
+import AuthenticationGuard from "./components/guards/authGuard";
+
 const Home = lazy(() => import('./routes/home'));
 const Login = lazy(() => import('./routes/login'));
 const Callback = lazy(() => import('./routes/callback'));
@@ -9,16 +11,17 @@ const Collection = lazy(() => import('./routes/collection'));
 const Brand = lazy(() => import('./routes/brand'));
 const CreateBrand = lazy(() => import('./routes/createBrand'));
 
+
 const App: Component = () => {
   return (
     <div>
       <Routes>
         <Route path="/" component={Home} />
         <Route path="/login" component={Login} />
-        <Route path="/copilot" component={Copilot} />
-        <Route path="/collection" component={Collection} />
-        <Route path="/brand" component={Brand} />
-        <Route path="/newbrand" component={CreateBrand} />
+        <Route path="/copilot" component={<AuthenticationGuard component={Copilot} />} />
+        <Route path="/collection" component={<AuthenticationGuard component={Collection} />} />
+        <Route path="/brand" component={<AuthenticationGuard component={Brand} />} />
+        <Route path="/newbrand" component={<AuthenticationGuard component={CreateBrand} />} />
         <Route path="/callback" component={Callback} />
       </Routes>
     </div>

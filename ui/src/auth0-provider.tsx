@@ -1,13 +1,16 @@
 import { Component, JSX } from 'solid-js';
-import { Auth0 } from './components/solid-auth0';
+import { Auth0Provider } from "./components/auth0-solidjs";
+import { useNavigate } from '@solidjs/router';
 
 type Auth0ProviderProps = {
   children?: JSX.Element;
 };
 
-export const Auth0Provider: Component<Auth0ProviderProps> = (props) => {
+const Auth0ProviderWithNavigate: Component<Auth0ProviderProps> = (props) => {
+  // const navigate = useNavigate();
 
   const domain = import.meta.env.VITE_APP_AUTH0_DOMAIN;
+  console.log(domain);
   const clientId = import.meta.env.VITE_APP_AUTH0_CLIENT_ID;
   const redirectUri = import.meta.env.VITE_APP_AUTH0_CALLBACK_URL;
   const audience = import.meta.env.VITE_APP_AUTH0_AUDIENCE;
@@ -16,16 +19,23 @@ export const Auth0Provider: Component<Auth0ProviderProps> = (props) => {
     return null;
   }
 
+  // const onRedirectCallback = (appState) => {
+  //   navigate(appState?.returnTo || window.location.pathname);
+  // };
+
   return (
-    <Auth0
+  <Auth0Provider
       domain={domain}
       clientId={clientId}
-      audience={audience}
-      logoutRedirectUri={`${window.location.origin}/`}
-      // loginRedirectUri={`${window.location.origin}/`}
-      loginRedirectUri={redirectUri}
+      authorizationParams={{
+        audience: audience,
+        scope: 'openid profile email',
+        redirect_uri: redirectUri,
+      }}
     >
       {props.children}
-    </Auth0>
+    </Auth0Provider>
   );
 };
+
+export default Auth0ProviderWithNavigate;

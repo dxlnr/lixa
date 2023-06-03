@@ -1,8 +1,8 @@
 import { Component, createSignal } from 'solid-js';
-import { useAuth0 } from '../solid-auth0';
+import { useAuth0 } from '../auth0-solidjs';
 
 const DropdownProfil: Component = () => {
-  const auth = useAuth0();
+  const { state: auth, logout } = useAuth0();
   const [isOpen, setIsOpen] = createSignal(false);
 
   function toggleDropdown() {
@@ -29,9 +29,9 @@ const DropdownProfil: Component = () => {
           onClick={toggleDropdown}
         >
           <img
-            class="w-9 h-9 rounded-full"
-            src={auth?.user.picture}
-            alt={auth?.user.name}
+            class="w-8 h-8 rounded-full"
+            src={auth.user?.picture}
+            alt={auth.user?.name}
           />
         </button>
       </div>
@@ -44,18 +44,16 @@ const DropdownProfil: Component = () => {
           tabindex="-1"
         >
           <div class="px-4 py-3">
-            <span class="block text-sm text-gray-900">{auth?.user.name}</span>
+            <span class="block text-sm text-gray-900">{auth.user?.name}</span>
             <span class="block text-sm text-gray-500 truncate">
-              {auth?.user.email}
+              {auth.user?.email}
             </span>
           </div>
           <ul class="px-2 py-3" aria-labelledby="user-menu-button">
             <li>
               <button
                 class="flex text-sm items-center"
-                onClick={() =>
-                  auth?.logout({ returnTo: window.location.origin })
-                }
+                onClick={() => logout({ returnTo: window.location.origin })}
               >
                 <svg
                   class="h-6 w-6 p-1"
