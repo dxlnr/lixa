@@ -1,6 +1,6 @@
 import { Component } from 'solid-js';
 
-import { useAuth0 } from '../components/solid-auth0';
+import { useAuth0 } from '../components/auth0-solidjs';
 import Navbar from '../components/navbar/navbar';
 
 const Callback: Component = () => {

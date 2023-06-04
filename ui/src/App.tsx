@@ -1,6 +1,7 @@
 import { Component, lazy } from 'solid-js';
 import { Routes, Route } from '@solidjs/router';
 
+import { useAuth0 } from "./components/auth0-solidjs";
 import AuthenticationGuard from "./components/guards/authGuard";
 
 const Home = lazy(() => import('./routes/home'));
@@ -13,6 +14,16 @@ const CreateBrand = lazy(() => import('./routes/createBrand'));
 
 
 const App: Component = () => {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return (
+      <div>
+        test
+      </div>
+    );
+  }
+
   return (
     <div>
       <Routes>
