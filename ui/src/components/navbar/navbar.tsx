@@ -1,13 +1,12 @@
-import { Component, createSignal } from 'solid-js';
+import { Component } from 'solid-js';
 import { A } from '@solidjs/router';
 import { useLocation } from '@solidjs/router';
 
 import DropdownProfil from './dropdownProfil';
-import logo from '/logo4.svg';
+import logo from '/lixalogo-01.png';
 
 const Navbar: Component = () => {
   const location = useLocation();
-  const [isOpen, setIsOpen] = createSignal(false);
 
   const isActive = (url: string) => {
     return location.pathname === url;

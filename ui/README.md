@@ -66,3 +66,13 @@ Auth
 
 ## Additional
 - https://www.youtube.com/watch?v=xiowCksSKpk
+
+
+## Next steps
+- loading element
+- clean up code 
+- add user to mongodb when registering 
+- display brand info of user when created
+- adjust collection 
+- font 
+- color adjustments

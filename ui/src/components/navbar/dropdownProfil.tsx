@@ -43,7 +43,7 @@ const DropdownProfil: Component = () => {
           aria-labelledby="menu-button"
           tabindex="-1"
         >
-          <div class="px-4 py-3">
+          <div class="px-4 py-3 hover:bg-gray-50">
             <span class="block text-sm text-gray-900">{auth.user?.name}</span>
             <span class="block text-sm text-gray-500 truncate">
               {auth.user?.email}
