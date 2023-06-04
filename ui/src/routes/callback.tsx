@@ -10,10 +10,8 @@ const Callback: Component = () => {
     return (
       <>
         <div>
-          <h1 id="page-title">
-            Error
-          </h1>
-          <div >
+          <h1 id="page-title">Error</h1>
+          <div>
             <p id="page-description">
               <span>{auth?.error.message}</span>
             </p>
@@ -24,7 +22,7 @@ const Callback: Component = () => {
   }
 
   return (
-    <div >
+    <div>
       <Navbar />
     </div>
   );

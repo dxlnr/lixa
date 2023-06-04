@@ -1,5 +1,5 @@
 import { Component, JSX } from 'solid-js';
-import { Auth0Provider } from "./components/auth0-solidjs";
+import { Auth0Provider } from './components/auth0-solidjs';
 import { useNavigate } from '@solidjs/router';
 
 type Auth0ProviderProps = {
@@ -18,12 +18,12 @@ const Auth0ProviderWithNavigate: Component<Auth0ProviderProps> = (props) => {
     return null;
   }
 
-//   const onRedirectCallback = (appState) => {
-//     navigate(appState?.returnTo || window.location.pathname);
-//   };
+  //   const onRedirectCallback = (appState) => {
+  //     navigate(appState?.returnTo || window.location.pathname);
+  //   };
 
   return (
-  <Auth0Provider
+    <Auth0Provider
       domain={domain}
       clientId={clientId}
       authorizationParams={{

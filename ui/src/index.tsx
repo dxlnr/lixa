@@ -3,7 +3,7 @@ import { Router } from '@solidjs/router';
 
 import './index.css';
 import App from './App';
-import Auth0ProviderWithNavigation from "./auth0-provider";
+import Auth0ProviderWithNavigation from './auth0-provider';
 
 const root = document.getElementById('root');
 
