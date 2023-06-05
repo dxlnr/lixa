@@ -3,6 +3,7 @@ import { Routes, Route } from '@solidjs/router';
 
 import { useAuth0 } from './components/auth0-solidjs';
 import AuthenticationGuard from './components/guards/authGuard';
+import PageLoader from './components/utils/pageloader';
 
 const Home = lazy(() => import('./routes/home'));
 const Login = lazy(() => import('./routes/login'));
@@ -16,14 +17,18 @@ const App: Component = () => {
   const { isLoading } = useAuth0();
 
   if (isLoading) {
-    return <div>test</div>;
+    return (
+      <div>
+        <PageLoader />
+      </div>
+    );
   }
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={Home} />
-        <Route path="/login" element={Login} />
+        <Route path="/" component={Home} />
+        <Route path="/login" component={Login} />
         <Route
           path="/copilot"
           element={<AuthenticationGuard component={Copilot} />}
@@ -37,10 +42,10 @@ const App: Component = () => {
           element={<AuthenticationGuard component={Brand} />}
         />
         <Route
-          path="/newbrand"
+          path="/brand/new"
           element={<AuthenticationGuard component={CreateBrand} />}
         />
-        <Route path="/callback" element={Callback} />
+        <Route path="/callback" component={Callback} />
       </Routes>
     </div>
   );
