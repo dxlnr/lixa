@@ -8,7 +8,7 @@ const CreateBrandFormSocials: Component = (props) => {
 
   return (
     <div class="container m-auto p-8 rounded-lg">
-      <div class="flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200">
+      <div class="flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus-within:border-b focus-within:border-c-lixa-s ">
         <svg
           class="w-5 h-5 text-gray-500"
           fill="#000000"
@@ -38,7 +38,7 @@ const CreateBrandFormSocials: Component = (props) => {
         />
       </div>
 
-      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200">
+      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus-within:border-b focus-within:border-c-lixa-s ">
         <svg
           class="w-5 h-5 text-gray-500"
           width="160px"
@@ -82,7 +82,7 @@ const CreateBrandFormSocials: Component = (props) => {
         />
       </div>
 
-      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200">
+      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus-within:border-b focus-within:border-c-lixa-s ">
         <svg
           class="w-5 h-5 text-gray-500"
           fill="#000000"

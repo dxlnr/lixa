@@ -17,7 +17,7 @@ const CreateBrandFormGeneral: Component = (props) => {
     <div class="container m-auto p-8 rounded-lg">
       <div
         class={
-          'flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b focus-within:border-b focus-within:border-violet-400 ' +
+          'flex justify-between sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b focus-within:border-b focus-within:border-c-lixa-s ' +
           (props.error() ? 'border-red-600' : 'border-gray-200')
         }
       >
@@ -191,7 +191,7 @@ const CreateBrandFormGeneral: Component = (props) => {
           </>
         )}
       </div>
-      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus:border-b focus:border-violet-400">
+      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus-within:border-b focus-within:border-c-lixa-s ">
         <svg
           class="w-5 h-5 text-gray-500"
           fill="#000000"
@@ -222,7 +222,7 @@ const CreateBrandFormGeneral: Component = (props) => {
           onInput={handleChange}
         />
       </div>
-      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus:border-b focus:border-violet-400">
+      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus-within:border-b focus-within:border-c-lixa-s ">
         <svg
           class="w-5 h-5 text-gray-500"
           width="160px"
@@ -258,7 +258,7 @@ const CreateBrandFormGeneral: Component = (props) => {
         />
       </div>
 
-      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200">
+      <div class="flex justify-between pt-4 sm:inline-flex sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 w-full border-b border-gray-200 focus-within:border-b focus-within:border-c-lixa-s ">
         <svg
           class="w-5 h-5 text-gray-500"
           width="160px"

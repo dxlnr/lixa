@@ -23,7 +23,7 @@ const Navbar: Component = () => {
             <li>
               <A
                 href="/copilot"
-                class={`block py-2 pl-6 pr-1 hover:text-violet-600 ${
+                class={`block py-2 pl-6 pr-1 hover:text-c-lixa-s ${
                   isActive('/copilot') ? 'text-black' : 'text-gray-400'
                 }`}
               >
@@ -33,7 +33,7 @@ const Navbar: Component = () => {
             <li>
               <A
                 href="/collection"
-                class={`block py-2 pr-1 hover:text-violet-600 ${
+                class={`block py-2 pr-1 hover:text-c-lixa-s ${
                   isActive('/collection') ? 'text-black' : 'text-gray-400'
                 }`}
               >
@@ -43,7 +43,7 @@ const Navbar: Component = () => {
             <li>
               <A
                 href="/brand"
-                class={`block py-2 pr-4 hover:text-violet-600 ${
+                class={`block py-2 pr-4 hover:text-c-lixa-s ${
                   isActive('/brand') ? 'text-black' : 'text-gray-400'
                 }`}
               >
