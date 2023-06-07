@@ -76,3 +76,8 @@ Auth
 - adjust collection 
 - font 
 - color adjustments
+- set on datamodel (mongodb)
+- add user edit possibility (change name & logo)
+- Copilot !!
+- make it hostable with terraform 
+- nginx config

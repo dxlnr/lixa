@@ -21,6 +21,7 @@ ThirdParties Content Creation Tools
 ## Material
 
 [Text-to-3D Textures](https://poly.cam/material-generator)
+[LangChain: Getting Started](https://towardsdatascience.com/getting-started-with-langchain-a-beginners-guide-to-building-llm-powered-applications-95fc8898732c)
 
 ## Paper
 
