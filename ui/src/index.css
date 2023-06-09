@@ -4,10 +4,10 @@
 
 @font-face {
   font-family: 'Dosis';
-  src: url('/dosis/Dosis-VariableFont_wght.ttf');
+  src: url('/fonts/dosis/Dosis-VariableFont_wght.ttf');
 }
 
 @font-face {
-  font-family: 'Dosis';
-  src: url('/Bruno-Ace/BrunoAce-Regular.ttf');
+  font-family: 'barlow';
+  src: url('/fonts/Barlow_Condensed/BarlowCondensed-Regular.ttf');
 }

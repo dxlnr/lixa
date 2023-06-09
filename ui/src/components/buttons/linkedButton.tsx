@@ -1,18 +1,12 @@
 import type { Component } from 'solid-js';
-import { A } from '@solidjs/router';
-
-import { useAuth0 } from '../auth0-solidjs/';
 
 const LinkedButton: Component = (props) => {
-  const { loginWithRedirect } = useAuth0();
-
   return (
     <>
-      <A href="mailto:gabriel.bobinski@lixa.ai">
+      <a href="mailto:gabriel.bobinski@lixa.ai">
         <button
           type="submit"
           class="w-full items-center text-black hover:text-white border border-gray-800 hover:bg-black underline font-medium text-xl px-2.5 py-2 inline-flex text-center"
-          onClick={() => loginWithRedirect()}
         >
           Reach out
           <svg
@@ -65,7 +59,7 @@ const LinkedButton: Component = (props) => {
             </g>
           </svg>
         </button>
-      </A>
+      </a>
     </>
   );
 };

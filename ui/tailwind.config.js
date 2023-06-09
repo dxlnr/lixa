@@ -10,8 +10,13 @@ module.exports = {
       },
       fontFamily: {
         dosis: ["Dosis"],
-        bruno_ace: ["Bruno-Ace"],
+        barlow: ["Barlow"],
       },
+      fontSize: {
+          'hxl': ['14rem', {
+              'lineHeight': '1',
+          }]
+      }
     }
   },
   plugins: []
