@@ -1,6 +1,6 @@
 const PageLoader = () => {
   return (
-    <>
+    <div class="h-screen flex items-center justify-center ">
       <div role="status">
         <svg
           aria-hidden="true"
@@ -20,7 +20,7 @@ const PageLoader = () => {
         </svg>
         <span class="sr-only">Loading...</span>
       </div>
-    </>
+    </div>
   );
 };
 

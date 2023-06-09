@@ -6,7 +6,7 @@ const LinkedButton: Component = (props) => {
       <a href="mailto:gabriel.bobinski@lixa.ai">
         <button
           type="submit"
-          class="w-full items-center text-black hover:text-white border border-gray-800 hover:bg-black underline font-medium text-xl px-2.5 py-2 inline-flex text-center"
+          class="w-full items-center text-white dark:text-white hover:text-black border border-white hover:bg-white underline font-medium text-xl px-2.5 py-2 inline-flex text-center"
         >
           Reach out
           <svg
@@ -37,14 +37,14 @@ const LinkedButton: Component = (props) => {
                       fill="none"
                       id="Right-2"
                       points="18.7 12.4 18.7 5.3 11.6 5.3"
-                      stroke="#000000"
+                      stroke="#ffffff"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
                     ></polyline>{' '}
                     <line
                       fill="none"
-                      stroke="#000000"
+                      stroke="#ffffff"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       stroke-width="2"
