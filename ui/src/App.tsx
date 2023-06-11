@@ -7,7 +7,6 @@ import PageLoader from './components/utils/pageloader';
 
 const Home = lazy(() => import('./routes/home'));
 const Login = lazy(() => import('./routes/login'));
-const Callback = lazy(() => import('./routes/callback'));
 const Copilot = lazy(() => import('./routes/copilot'));
 const Collection = lazy(() => import('./routes/collection'));
 const Brand = lazy(() => import('./routes/brand'));
@@ -45,7 +44,6 @@ const App: Component = () => {
           path="/brand/new"
           element={<AuthenticationGuard component={CreateBrand} />}
         />
-        <Route path="/callback" component={Callback} />
       </Routes>
     </div>
   );

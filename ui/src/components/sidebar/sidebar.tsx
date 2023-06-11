@@ -20,7 +20,7 @@ const Sidebar = () => {
           <div class="flex flex-row">
             <button
               type="button"
-              class="bg-white text-black hover:bg-slate-400 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+              class="bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
               onClick={handleClick}
             >
               <svg
@@ -81,7 +81,7 @@ const Sidebar = () => {
         <div class="flex-none">
           <button
             type="button"
-            class="flex-none bg-white text-black hover:bg-slate-400 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+            class="flex-none bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
           >
             <svg
               class="w-7 h-7"
@@ -110,7 +110,7 @@ const Sidebar = () => {
         <div class="flex-none">
           <button
             type="button"
-            class="flex-none bg-white text-black hover:bg-slate-400 hover:bg-gradient-to-br shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+            class="flex-none bg-white text-black hover:bg-slate-300 hover:bg-gradient-to-br shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
           >
             <svg
               class="w-7 h-7"

@@ -7,6 +7,7 @@ import { createSlider } from '../slider';
 import CreateBrandFormGeneral from '../brandForms/general';
 import CreateBrandFormSocials from '../brandForms/socials';
 import CreateBrandFormLogo from '../brandForms/logo';
+import { API_BASE } from '../../api';
 
 const Carousel: Component = () => {
   const [slider, { next, prev }] = createSlider();
@@ -22,21 +23,16 @@ const Carousel: Component = () => {
     } else {
       setFormData((prev) => ({ ...prev, ['user']: auth.user?.email }));
       try {
-        // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
-        const response = await fetch(
-          'http://127.0.0.1:5000/api/brand/create_brand',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-            },
-            body: JSON.stringify(formData()),
-          }
-        );
+        const response = await fetch(`${API_BASE}/brand/create_brand`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+          body: JSON.stringify(formData()),
+        });
         if (response.ok) {
           console.log('POST request succeeded');
-          // navigate('/brand');
         } else {
           console.error('POST request failed');
         }
@@ -48,11 +44,8 @@ const Carousel: Component = () => {
         var f = logo();
         logoData.append('im', f);
         try {
-          // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
           const rb = await fetch(
-            `http://127.0.0.1:5000/api/brand/brand_logo_upload/${
-              formData()['name']
-            }`,
+            `${API_BASE}/brand/brand_logo_upload/${formData()['name']}`,
             {
               method: 'POST',
               body: logoData,

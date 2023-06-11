@@ -1,6 +1,6 @@
 import { Component, createSignal, onCleanup, onMount } from 'solid-js';
 import { useAuth0 } from '../components/auth0-solidjs';
-// import { fetchUserData } from './api';
+import { API_BASE } from '../api';
 
 import Navbar from '../components/navbar/navbar';
 import EmptyBrandLight from '../components/emptybrand/emptyBrandLight';
@@ -14,7 +14,7 @@ const Brand: Component = () => {
   onMount(async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/brand/get_brand/${auth.user?.email}`
+        `${API_BASE}/brand/get_brand/${auth.user?.email}`
       );
       if (!response.ok) {
         throw new Error('Network response was not ok');

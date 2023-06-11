@@ -1,12 +1,11 @@
 import { Component } from 'solid-js';
+import { API_BASE } from '../../api';
 
 const BrandCard: Component = (props) => {
   const fetchImage = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/brand/get_brand_logo/${
-          props.userData().logo
-        }`
+        `${API_BASE}/brand/get_brand_logo/${props.userData().logo}`
       );
       if (!response.ok) {
         throw new Error('Network response was not ok');

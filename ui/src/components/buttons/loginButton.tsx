@@ -5,17 +5,6 @@ import { useAuth0 } from '../auth0-solidjs/';
 const LoginButton: Component = () => {
   const { state: auth, loginWithRedirect } = useAuth0();
 
-  // const handleLogin = async () => {
-  //   await loginWithRedirect({
-  //     appState: {
-  //       returnTo: "/copilot",
-  //     },
-  //     authorizationParams: {
-  //       prompt: "login",
-  //     },
-  //   });
-  // };
-
   return (
     <>
       <button

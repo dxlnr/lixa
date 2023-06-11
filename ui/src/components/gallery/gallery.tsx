@@ -1,5 +1,6 @@
 import { createEffect, createResource, createSignal } from 'solid-js';
 import { on } from 'solid-js/dom';
+import { API_BASE } from '../../api';
 
 const Gallery = () => {
   const [prompt, setPrompt] = createSignal('');
@@ -9,23 +10,31 @@ const Gallery = () => {
       const formData = {
         prompt: prompt,
       };
-      const response = await fetch(
-        // 'http://192.168.88.18:5000/api/copilot/prompt',
-        'http://127.0.0.1:5000/api/copilot/prompt',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await fetch(`${API_BASE}/copilot/prompt`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(formData),
+      });
       const blob = await response.blob();
       return URL.createObjectURL(blob);
     } else {
       return null;
     }
+  };
+  
+  const saveImage = async () => {
+    const response = await fetch(`${API_BASE}/copilot/save_image`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify(formData),
+      });
+      const j = await response.json();
   };
 
   const [imgs] = createResource(prompt, handleSubmit);
@@ -37,7 +46,7 @@ const Gallery = () => {
           <input
             type="text"
             id="input-group-1"
-            class="w-full placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow-lg outline-none focus:outline-none focus:ring ring-slate-400 px-3 py-3 h-12"
+            class="w-full placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow-lg outline-none focus:outline-none focus:ring ring-slate-400 px-3 py-3 h-12"
             placeholder="prompt"
             value={prompt()}
             onChange={(e) => setPrompt(e.target.value)}
@@ -51,7 +60,7 @@ const Gallery = () => {
             Generate
           </button>
         </div>
-        <div class="bg-white rounded-sm shadow-xl flex flex-wrap">
+        <div class="bg-white rounded-sm shadow-xl flex flex-wrap justify-center">
           <div class="flex flex-wrap">
             {imgs.loading && (
               <div role="status" class="space-y-8 animate-pulse p-2">
@@ -100,6 +109,43 @@ const Gallery = () => {
             )}
           </div>
         </div>
+        {imgs() !== null ? (
+          <div class="bg-white justify-end flex p-1">
+            <button
+              type="button"
+              class="flex-none bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+              onSubmit={(e) => setPrompt(e.target.value)}
+            >
+              <svg
+                class="w-7 h-7"
+                width="160px"
+                height="160px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {' '}
+                  <path
+                    d="M15 20V15H9V20M18 20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H14.1716C14.702 4 15.2107 4.21071 15.5858 4.58579L19.4142 8.41421C19.7893 8.78929 20 9.29799 20 9.82843V18C20 19.1046 19.1046 20 18 20Z"
+                    stroke="#000000"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>{' '}
+                </g>
+              </svg>
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
