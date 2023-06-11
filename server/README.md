@@ -26,3 +26,17 @@ Antipattern
  - (6) Separating data that is accessed together
 
 [Schema Design Anti-Patterns - Part 1](https://www.youtube.com/watch?v=8CZs-0it9r4)
+
+
+## Deployment
+
+```bash
+sudo apt-get update && sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-install python3.11
+sudo apt-get install python3-venv
+# Create environment
+python3 -m venv lixa
+source lixa/bin/activate
+# get the folder
+```

@@ -20,7 +20,6 @@ def prompt():
     p = j["prompt"]
 
     # model_path = os.path.join(get_project_root(), 'zoo/models/')
-    # print(model_path)
     pil_img = txt2img(p)
 
     # serve the image.

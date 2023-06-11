@@ -1,5 +1,6 @@
 import { Component, createSignal } from 'solid-js';
 import { useNavigate } from '@solidjs/router';
+import { useAuth0 } from '../auth0-solidjs';
 
 import '../slider/slider.css';
 import { createSlider } from '../slider';
@@ -13,11 +14,13 @@ const Carousel: Component = () => {
   const [logo, setLogo] = createSignal(null);
   const [error, setError] = createSignal(false);
   const navigate = useNavigate();
+  const { state: auth } = useAuth0();
 
   const handleSubmit = async () => {
     if (formData()['name'] === undefined || formData()['name'] === '') {
       setError(true);
     } else {
+      setFormData((prev) => ({ ...prev, ['user']: auth.user?.email}));
       try {
         // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
         const response = await fetch(

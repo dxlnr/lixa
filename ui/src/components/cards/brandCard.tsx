@@ -1,22 +1,38 @@
 import { Component } from 'solid-js';
 
-const BrandCard: Component = () => {
+const BrandCard: Component = (props) => {
+  const fetchImage = async () => {
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/api/brand/get_brand_logo/${props.userData().logo}`);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const blob = await response.blob();
+        return URL.createObjectURL(blob);
+      } catch (error) {
+        console.error("Fetch error: ", error);
+      };
+  };
+  
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <div class="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur bg-clip-border mb-2">
         <div class="flex flex-wrap items-center -mx-3">
           <div class="flex-none w-auto max-w-full px-3">
             <div class="text-size-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-              <img
-                src="/nike.jpg"
-                alt="brand_logo"
-                class="h-20 w-20 shadow-soft-sm rounded-xl"
+              <Show when={props.userData().logo}>
+                <img src={fetchImage} alt="Loaded image" />
+                <img
+                  src="/nike.jpg"
+                    alt="brand_logo"
+                    class="h-20 w-20 shadow-soft-sm rounded-xl"
               />
+              </Show>
             </div>
           </div>
           <div class="flex-none w-auto max-w-full px-3 my-auto">
             <div class="h-full">
-              <h2 class="text-2xl font-semibold mb-2 text-slate-700">Nike</h2>
+              <h2 class="text-2xl font-semibold mb-2 text-slate-800">{props.userData().name}</h2>
 
               <div class="flex flex-row">
                 <svg
@@ -44,7 +60,7 @@ const BrandCard: Component = () => {
                   </g>
                 </svg>
                 <p class="mb-0 leading-normal text-sm text-gray-600 px-2">
-                  Accessories & Sports Equipment
+                  {props.userData().profession}
                 </p>
               </div>
 
@@ -75,7 +91,7 @@ const BrandCard: Component = () => {
                   </g>
                 </svg>
                 <p class="mb-0 leading-normal text-sm text-gray-600 px-2">
-                  https://www.nike.com
+                  {props.userData().website}
                 </p>
               </div>
               <div class="flex flex-row pt-1">
@@ -100,7 +116,7 @@ const BrandCard: Component = () => {
                   </g>
                 </svg>
                 <p class="mb-0 leading-normal text-sm text-gray-600 px-2">
-                  USA
+                  {props.userData().location}
                 </p>
               </div>
             </div>

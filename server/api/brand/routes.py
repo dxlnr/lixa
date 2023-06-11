@@ -1,10 +1,12 @@
 """Brand API Endpoints"""
 import os
+import json
 from collections import defaultdict
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, send_file 
 from flask_cors import cross_origin
 from werkzeug.utils import secure_filename
+from bson import json_util
 
 from utils.helpers import get_project_root
 from db import db
@@ -54,8 +56,25 @@ def brand_logo_upload(brand_name: str) -> (str, int):
         return "Image Upload Successfully", 200
 
 
-@brand_blueprint.route("/get_brand", methods=["GET"])
+@brand_blueprint.route("/get_brand/<string:user_email>", methods=["GET"])
 @cross_origin(supports_credentials=True)
-def get_brand():
+def get_brand(user_email: str):
     r"""Instantiates new brand for user and writes it to mongodb table."""
-    x = cbrands.find_one()
+    b = cbrands.find_one({"user": user_email})
+    print(b)
+    if b:
+        return json.loads(json_util.dumps(b)), 200
+    else:
+        return None, 204
+
+
+@brand_blueprint.route("/get_brand_logo/<string:logo_url>", methods=["GET"])
+@cross_origin(supports_credentials=True)
+def get_brand_logo(logo_url: str):
+    r"""Instantiates new brand for user and writes it to mongodb table."""
+    target = os.path.join(get_project_root(), "logos/")
+    try:
+        url = os.path.join(target, logo_url)
+        return send_file(url), 200 
+    except:
+        return None, 204
