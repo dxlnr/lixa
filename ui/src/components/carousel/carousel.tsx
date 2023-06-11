@@ -20,7 +20,7 @@ const Carousel: Component = () => {
     if (formData()['name'] === undefined || formData()['name'] === '') {
       setError(true);
     } else {
-      setFormData((prev) => ({ ...prev, ['user']: auth.user?.email}));
+      setFormData((prev) => ({ ...prev, ['user']: auth.user?.email }));
       try {
         // const response = await fetch('http://192.168.88.18:5000/api/brand/create_brand',
         const response = await fetch(

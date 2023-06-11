@@ -3,17 +3,21 @@ import { Component } from 'solid-js';
 const BrandCard: Component = (props) => {
   const fetchImage = async () => {
     try {
-        const response = await fetch(`http://127.0.0.1:5000/api/brand/get_brand_logo/${props.userData().logo}`);
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const blob = await response.blob();
-        return URL.createObjectURL(blob);
-      } catch (error) {
-        console.error("Fetch error: ", error);
-      };
+      const response = await fetch(
+        `http://127.0.0.1:5000/api/brand/get_brand_logo/${
+          props.userData().logo
+        }`
+      );
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const blob = await response.blob();
+      return URL.createObjectURL(blob);
+    } catch (error) {
+      console.error('Fetch error: ', error);
+    }
   };
-  
+
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <div class="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur bg-clip-border mb-2">
@@ -24,15 +28,17 @@ const BrandCard: Component = (props) => {
                 <img src={fetchImage} alt="Loaded image" />
                 <img
                   src="/nike.jpg"
-                    alt="brand_logo"
-                    class="h-20 w-20 shadow-soft-sm rounded-xl"
-              />
+                  alt="brand_logo"
+                  class="h-20 w-20 shadow-soft-sm rounded-xl"
+                />
               </Show>
             </div>
           </div>
           <div class="flex-none w-auto max-w-full px-3 my-auto">
             <div class="h-full">
-              <h2 class="text-2xl font-semibold mb-2 text-slate-800">{props.userData().name}</h2>
+              <h2 class="text-2xl font-semibold mb-2 text-slate-800">
+                {props.userData().name}
+              </h2>
 
               <div class="flex flex-row">
                 <svg

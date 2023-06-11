@@ -16,7 +16,7 @@ const Navbar: Component = () => {
     <nav class="bg-white border-b border-gray-200">
       <div class="flex flex-wrap items-center justify-between p-4">
         <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-0">
-          <A href="https://lixa.ai" class="flex items-center">
+          <A href="/" class="flex items-center">
             <img src={logo} class="h-8 mr-3" alt="logo" />
           </A>
           <ul class="flex flex-col activate:bg-blue-600 font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
