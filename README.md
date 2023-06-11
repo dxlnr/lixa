@@ -67,3 +67,43 @@ ThirdParties Content Creation Tools
  - [Github Actions](https://github.com/): Automate Software Development Workflows
 
 Options: Firebase
+
+
+## Deployment
+
+Three server connections:
+```bash
+#jenkins
+# ansible
+ssh -i ".aws/ec2_server_key_dillner.pem" ubuntu@ec2-18-195-50-206.eu-central-1.compute.amazonaws.com
+# app
+```
+
+```bash
+sudo apt-get update
+```
+Install Java
+```bash
+sudo apt-get install openjdk-11-jdk
+```
+Install Jenkins itself
+```bash
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install jenkins
+```
+Once that’s done, start the Jenkins service with the following command:
+```bash
+sudo systemctl start jenkins.service
+```
+To confirm its status, use:
+```bash
+sudo systemctl status jenkins
+```

@@ -7,7 +7,6 @@ type Auth0ProviderProps = {
 };
 
 const Auth0ProviderWithNavigate: Component<Auth0ProviderProps> = (props) => {
-  // const navigate = useNavigate();
 
   const domain = import.meta.env.VITE_APP_AUTH0_DOMAIN;
   const clientId = import.meta.env.VITE_APP_AUTH0_CLIENT_ID;
@@ -17,10 +16,6 @@ const Auth0ProviderWithNavigate: Component<Auth0ProviderProps> = (props) => {
   if (!(domain && clientId && redirectUri && audience)) {
     return null;
   }
-
-  //   const onRedirectCallback = (appState) => {
-  //     navigate(appState?.returnTo || window.location.pathname);
-  //   };
 
   return (
     <Auth0Provider
