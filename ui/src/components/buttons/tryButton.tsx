@@ -1,8 +1,9 @@
-import type { Component } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 
 import { useAuth0 } from '../auth0-solidjs/';
 
 const TryButton: Component = () => {
+  const [fillColor, setFillColor] = createSignal('#ffffff');
   const { loginWithRedirect } = useAuth0();
 
   return (
@@ -11,6 +12,8 @@ const TryButton: Component = () => {
         type="submit"
         class="w-full items-center text-white hover:text-black border border-white hover:bg-white underline font-medium text-xl px-2.5 py-2 inline-flex text-center"
         onClick={() => loginWithRedirect()}
+        onMouseOut={() => setFillColor('#ffffff')}
+        onMouseOver={() => setFillColor('#000000')}
       >
         Try lixa
         <svg
@@ -41,14 +44,14 @@ const TryButton: Component = () => {
                     fill="none"
                     id="Right-2"
                     points="18.7 12.4 18.7 5.3 11.6 5.3"
-                    stroke="#ffffff"
+                    stroke={fillColor()}
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
                   ></polyline>{' '}
                   <line
                     fill="none"
-                    stroke="#ffffff"
+                    stroke={fillColor()}
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"

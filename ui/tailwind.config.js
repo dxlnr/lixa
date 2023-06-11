@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         dosis: ["Dosis"],
         barlow: ["Barlow"],
+        syne: ["Syne"],
       },
       fontSize: {
           'hxl': ['14rem', {

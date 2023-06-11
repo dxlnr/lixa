@@ -11,3 +11,8 @@
   font-family: 'barlow';
   src: url('/fonts/Barlow_Condensed/BarlowCondensed-Regular.ttf');
 }
+
+@font-face {
+  font-family: 'syne';
+  src: url('/fonts/Syne/Syne-VariableFont_wght.ttf');
+}

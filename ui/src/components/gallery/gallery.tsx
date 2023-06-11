@@ -24,17 +24,17 @@ const Gallery = () => {
       return null;
     }
   };
-  
+
   const saveImage = async () => {
     const response = await fetch(`${API_BASE}/copilot/save_image`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify(formData),
-      });
-      const j = await response.json();
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(formData),
+    });
+    const j = await response.json();
   };
 
   const [imgs] = createResource(prompt, handleSubmit);
