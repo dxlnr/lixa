@@ -1,21 +1,6 @@
 import { Component } from 'solid-js';
-import { API_BASE } from '../../api';
 
 const BrandCard: Component = (props) => {
-  const fetchImage = async () => {
-    try {
-      const response = await fetch(
-        `${API_BASE}/brand/get_brand_logo/${props.userData().logo}`
-      );
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const blob = await response.blob();
-      return URL.createObjectURL(blob);
-    } catch (error) {
-      console.error('Fetch error: ', error);
-    }
-  };
 
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -25,11 +10,6 @@ const BrandCard: Component = (props) => {
             <div class="text-size-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
               <Show when={props.userData().logo}>
                 <img src={fetchImage} alt="Loaded image" />
-                <img
-                  src="/nike.jpg"
-                  alt="brand_logo"
-                  class="h-20 w-20 shadow-soft-sm rounded-xl"
-                />
               </Show>
             </div>
           </div>

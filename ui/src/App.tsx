@@ -6,6 +6,7 @@ import AuthenticationGuard from './components/guards/authGuard';
 import PageLoader from './components/utils/pageloader';
 
 const Home = lazy(() => import('./routes/home'));
+const Account = lazy(() => import('./routes/account'));
 const Login = lazy(() => import('./routes/login'));
 const Copilot = lazy(() => import('./routes/copilot'));
 const Collection = lazy(() => import('./routes/collection'));
@@ -43,6 +44,9 @@ const App: Component = () => {
         <Route
           path="/brand/new"
           element={<AuthenticationGuard component={CreateBrand} />}
+        />
+        <Route path="/account"  
+          element={<AuthenticationGuard component={Account} />}
         />
       </Routes>
     </div>

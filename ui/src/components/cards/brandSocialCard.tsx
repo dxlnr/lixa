@@ -1,4 +1,4 @@
-import { Component, createSignal } from 'solid-js';
+import { Component, For, createSignal } from 'solid-js';
 
 const BrandSocialCard: Component = (props) => {
   const [socials, setSocials] = createSignal([

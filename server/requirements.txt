@@ -1,11 +1,12 @@
 Authlib
 black
+diffusors
 flask
 flask-cors
 flasgger
+minio
 sqlalchemy
 pymongo
 python-bsonjs
 gunicorn
 torch
-diffusors

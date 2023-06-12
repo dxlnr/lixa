@@ -1,4 +1,4 @@
-import { Component, createSignal, onCleanup, onMount } from 'solid-js';
+import { Component, Show, createSignal, onMount } from 'solid-js';
 import { useAuth0 } from '../components/auth0-solidjs';
 import { API_BASE } from '../api';
 
@@ -28,6 +28,7 @@ const Brand: Component = () => {
     } finally {
       setLoading(false);
     }
+
   });
 
   return (
