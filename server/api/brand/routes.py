@@ -1,8 +1,10 @@
 """Brand API Endpoints"""
 import os
+import base64
 import io
 import json
 from collections import defaultdict
+from PIL import Image
 
 from flask import Blueprint, jsonify, request, send_file
 from flask_cors import cross_origin
@@ -61,37 +63,14 @@ def get_brand(user_email: str):
     r"""Instantiates new brand for user and writes it to mongodb table."""
     b = cbrands.find_one({"user": user_email})
     if b:
-        return json.loads(json_util.dumps(b)), 200
-    else:
-        return None, 204
-
-
-@brand_blueprint.route("/get_brand_logo/<string:user_email>", methods=["GET"])
-@cross_origin(supports_credentials=True)
-def get_brand_logo(user_email: str):
-    r"""Instantiates new brand for user and writes it to mongodb table."""
-    b = cbrands.find_one({"user": user_email})
-    if b:
-        logo_url = b["logo"]
+        user = json.loads(json_util.dumps(b))
         try:
-            data = minio_client.get_object(s3_bucket, logo_url)
-            f = io.BytesIO()
-            for d in data.stream(32 * 1024):
-                f.write(d)
-            # image = Image.open(f)
-            return send_file(f, mimetype="image/jpeg"), 200
-        except Exception as err:
-            print(err)
-            return None, 204
-        # finally:
-        #     response.close()
-        #     response.release_conn()
-        # pil_im = response.data.decode()
-        # # pil_im = response.data
-        # print(type(pil_im), pil_im)
-        # img_io = io.BytesIO()
-        # pil_im.save(img_io, "JPEG", quality=100)
-        # img_io.seek(0)
-        # return send_file(img_io, mimetype="image/jpeg"), 200
+            logo_url = b["logo"]
+            r = minio_client.get_object(s3_bucket, logo_url)
+            data = r.read()
+            user["image"] = base64.b64encode(data).decode("utf-8")
+        except FileNotFoundError:
+            user["image"] = None
+        return jsonify(user)
     else:
         return None, 204

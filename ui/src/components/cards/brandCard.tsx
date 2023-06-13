@@ -1,16 +1,18 @@
-import { Component } from 'solid-js';
+import { Component, Show } from 'solid-js';
 
 const BrandCard: Component = (props) => {
-
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <div class="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur bg-clip-border mb-2">
         <div class="flex flex-wrap items-center -mx-3">
           <div class="flex-none w-auto max-w-full px-3">
             <div class="text-size-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-              <Show when={props.userData().logo}>
-                <img src={fetchImage} alt="Loaded image" />
-              </Show>
+              {props.userData().image && (
+                <img
+                  src={`data:image/jpeg;base64,${props.userData().image}`}
+                  alt="Profile"
+                />
+              )}
             </div>
           </div>
           <div class="flex-none w-auto max-w-full px-3 my-auto">

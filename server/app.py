@@ -9,7 +9,7 @@ from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 from authlib.integrations.flask_client import OAuth
 
-from db import db, env 
+from db import db, env
 
 app = Flask(__name__)
 app.config["CORS_HEADERS"] = "Content-Type"
@@ -25,11 +25,12 @@ oauth.register(
     client_kwargs={
         "scope": "openid profile email",
     },
-    server_metadata_url=f'https://{env.AUTH0_DOMAIN}/.well-known/openid-configuration',
+    server_metadata_url=f"https://{env.AUTH0_DOMAIN}/.well-known/openid-configuration",
 )
 
 api_blueprint.register_blueprint(brand_blueprint, url_prefix="/brand")
 api_blueprint.register_blueprint(copilot_blueprint, url_prefix="/copilot")
+
 
 @api_blueprint.route("/callback", methods=["GET", "POST"])
 @cross_origin(supports_credentials=True)
@@ -45,6 +46,7 @@ def login():
     return oauth.auth0.authorize_redirect(
         redirect_uri=url_for("api_blueprint.callback", _external=True)
     )
+
 
 @api_blueprint.route("/logout")
 @cross_origin(supports_credentials=True)
@@ -63,7 +65,9 @@ def logout():
         )
     )
 
+
 app.register_blueprint(api_blueprint, url_prefix="/api")
+
 
 @app.route("/")
 def check():

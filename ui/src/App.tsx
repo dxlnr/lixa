@@ -45,7 +45,8 @@ const App: Component = () => {
           path="/brand/new"
           element={<AuthenticationGuard component={CreateBrand} />}
         />
-        <Route path="/account"  
+        <Route
+          path="/account"
           element={<AuthenticationGuard component={Account} />}
         />
       </Routes>
