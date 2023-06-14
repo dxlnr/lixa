@@ -2,6 +2,11 @@
 
 Provisional Server written in [flask](https://flask.palletsprojects.com/en/2.3.x/)
 
+## Run it with Gunicorn
+```bash
+gunicorn -w 4 -b 0.0.0.0:5000 app:app --reload
+```
+
 Using mongodb for storing shit.
 
 ```

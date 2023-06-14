@@ -47,7 +47,9 @@ const Brand: Component = () => {
             <div class="col-span-2">
               <BrandCard userData={userData} />
             </div>
-            <BrandSocialCard userData={userData} />
+            <div class="col-start-2">
+              <BrandSocialCard userData={userData} />
+            </div>
           </div>
         )}
       </Show>

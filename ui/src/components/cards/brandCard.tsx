@@ -3,12 +3,13 @@ import { Component, Show } from 'solid-js';
 const BrandCard: Component = (props) => {
   return (
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <div class="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur bg-clip-border mb-2">
-        <div class="flex flex-wrap items-center -mx-3">
-          <div class="flex-none w-auto max-w-full px-3">
+      <div class="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 shadow-blur bg-clip-border">
+        <div class="flex flex-wrap items-center">
+          <div class="flex-none w-auto max-w-full">
             <div class="text-size-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
               {props.userData().image && (
                 <img
+                  class="w-24 h-24 rounded-lg"
                   src={`data:image/jpeg;base64,${props.userData().image}`}
                   alt="Profile"
                 />
@@ -77,9 +78,11 @@ const BrandCard: Component = (props) => {
                     ></path>{' '}
                   </g>
                 </svg>
-                <p class="mb-0 leading-normal text-sm text-gray-600 px-2">
-                  {props.userData().website}
-                </p>
+                <a href={props.userData().website}>
+                  <p class="mb-0 leading-normal text-sm text-gray-600 px-2 hover:underline hover:text-c-lixa-s">
+                    {props.userData().website}
+                  </p>
+                </a>
               </div>
               <div class="flex flex-row pt-1">
                 <svg

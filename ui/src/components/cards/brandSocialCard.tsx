@@ -119,13 +119,46 @@ const BrandSocialCard: Component = (props) => {
                   {s.svg}
                   <div class="pl-3">
                     <div class="text-base font-semibold">{s.type}</div>
-                    <div class="font-normal text-gray-500">{s.fetch}</div>
+                    <a href={s.fetch}>
+                      <div class="font-normal text-gray-500 hover:underline hover:text-c-lixa-s">
+                        {s.fetch}
+                      </div>
+                    </a>
                   </div>
                 </th>
                 <td class="px-6 py-4">
                   <div class="flex items-center">
                     <span class="bg-gray-100 text-gray-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full mr-2 dark:bg-gray-700 dark:text-gray-300">
-                      {s.fetch === null ? (
+                      <Show
+                        when={s.fetch}
+                        fallback={
+                          <svg
+                            class="h-3.5 w-3.5"
+                            width="160px"
+                            height="160px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                              id="SVGRepo_tracerCarrier"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                              {' '}
+                              <path
+                                d="M19 5L4.99998 19M5.00001 5L19 19"
+                                stroke="#000000"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              ></path>{' '}
+                            </g>
+                          </svg>
+                        }
+                      >
                         <svg
                           aria-hidden="true"
                           class="w-3.5 h-3.5"
@@ -139,33 +172,7 @@ const BrandSocialCard: Component = (props) => {
                             clip-rule="evenodd"
                           ></path>
                         </svg>
-                      ) : (
-                        <svg
-                          class="h-3.5 w-3.5"
-                          width="160px"
-                          height="160px"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            {' '}
-                            <path
-                              d="M19 5L4.99998 19M5.00001 5L19 19"
-                              stroke="#000000"
-                              stroke-width="1.5"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>{' '}
-                          </g>
-                        </svg>
-                      )}
+                      </Show>
                       <span class="sr-only">Icon description</span>
                     </span>
                   </div>
