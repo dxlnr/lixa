@@ -1,9 +1,12 @@
 import { createEffect, createResource, createSignal } from 'solid-js';
 import { on } from 'solid-js/dom';
 import { API_BASE } from '../../api';
+import { useAuth0 } from '../auth0-solidjs';
 
 const Gallery = () => {
+  const { state: auth } = useAuth0();
   const [prompt, setPrompt] = createSignal('');
+  const [blob, setBlob] = createSignal(null);
 
   const handleSubmit = async (prompt) => {
     if (prompt) {
@@ -19,6 +22,7 @@ const Gallery = () => {
         body: JSON.stringify(formData),
       });
       const blob = await response.blob();
+      setBlob(blob);
       return URL.createObjectURL(blob);
     } else {
       return null;
@@ -26,15 +30,26 @@ const Gallery = () => {
   };
 
   const saveImage = async () => {
-    const response = await fetch(`${API_BASE}/copilot/save_image`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(formData),
-    });
-    const j = await response.json();
+    if (imgs) {
+      const uploadImage = new FormData();
+      var im = blob();
+      uploadImage.append('im', im, 'test.jpg');
+
+      const response = await fetch(
+        `${API_BASE}/copilot/save_image/${auth.user?.email}`,
+        {
+          method: 'POST',
+          body: uploadImage,
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Image saved:', data);
+        })
+        .catch((error) => {
+          console.error('Error saving image:', error);
+        });
+    }
   };
 
   const [imgs] = createResource(prompt, handleSubmit);
@@ -114,7 +129,7 @@ const Gallery = () => {
             <button
               type="button"
               class="flex-none bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
-              onSubmit={(e) => setPrompt(e.target.value)}
+              onClick={saveImage}
             >
               <svg
                 class="w-7 h-7"
