@@ -9,7 +9,6 @@ def txt2img(
     device: str = "cuda",
 ):
     """Inference for text-to-image model."""
-    device = "cpu"
     p = DiffusionPipeline.from_pretrained(model_path)
     p = p.to(device)
 
