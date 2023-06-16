@@ -69,15 +69,12 @@ Auth
 
 
 ## Next steps
-- loading element
-- clean up code 
-- add user to mongodb when registering 
-- display brand info of user when created
-- adjust collection 
-- font 
 - color adjustments
-- set on datamodel (mongodb)
 - add user edit possibility (change name & logo)
+- add brand edit possibility
 - Copilot !!
 - make it hostable with terraform 
 - nginx config
+- adding axios
+- adding error handling of requests
+- brand creation success page & adding some analysis feedback. ( e.g. on the page is show that the content gets quality checked and collected) 

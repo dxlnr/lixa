@@ -25,7 +25,7 @@ const App: Component = () => {
   }
 
   return (
-    <div>
+    <div class="body-font font-syne">
       <Routes>
         <Route path="/" component={Home} />
         <Route path="/login" component={Login} />

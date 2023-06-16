@@ -5,6 +5,11 @@ from dataclasses import dataclass
 
 @dataclass
 class ScrapeEnv:
+    MINIO_ENDPOINT = ""
+    MINIO_ACCESS_KEY = ""
+    MINIO_SECRET_KEY = ""
+    MINIO_REGION = ""
+
     def __setitem__(self, key, value):
         """."""
         setattr(self, key, value)
@@ -12,6 +17,15 @@ class ScrapeEnv:
     def __getitem__(self, key):
         """."""
         return getattr(self, key)
+
+    def get_minio_essentials(self) -> tuple[str]:
+        """."""
+        return (
+            self.MINIO_ENDPOINT,
+            self.MINIO_ACCESS_KEY,
+            self.MINIO_SECRET_KEY,
+            self.MINIO_REGION,
+        )
 
     def get_env_data_as_dict(self, path: str = ".env") -> dict:
         """Sets env vars from .env file in root."""

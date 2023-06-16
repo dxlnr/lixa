@@ -6,7 +6,7 @@ import LandingNavbar from '../components/navbar/landingNavbar';
 
 const Home: Component = () => {
   return (
-    <div class="body-font font-syne text-white bg-black h-screen">
+    <div class="text-white bg-black h-screen">
       <LandingNavbar />
       <div class="container h-[calc(100vh-64px)] md:h-[calc(100vh-80px)] flex items-end">
         <div class="cols-container pb-32 md:pb-48 m-5">
