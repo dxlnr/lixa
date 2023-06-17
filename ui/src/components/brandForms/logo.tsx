@@ -42,9 +42,7 @@ const CreateBrandFormLogo: Component = (props) => {
             create new brand
           </button>
           {props.error() && (
-            <p class="text-xs text-red-600 py-2">
-              Please, make sure all required fields are filled.
-            </p>
+            <p class="text-xs text-red-600 py-2">{props.error()}</p>
           )}
         </div>
       </div>

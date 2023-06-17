@@ -13,13 +13,15 @@ const Carousel: Component = () => {
   const [slider, { next, prev }] = createSlider();
   const [formData, setFormData] = createSignal({});
   const [logo, setLogo] = createSignal(null);
-  const [error, setError] = createSignal(false);
+  const [error, setError] = createSignal(null);
+  const [errorReq, setErrorReq] = createSignal(false);
   const navigate = useNavigate();
   const { state: auth } = useAuth0();
 
   const handleSubmit = async () => {
     if (formData()['name'] === undefined || formData()['name'] === '') {
-      setError(true);
+      setErrorReq(true);
+      setError('Please, make sure all required fields are filled.');
     } else {
       setFormData((prev) => ({ ...prev, ['user']: auth.user?.email }));
       try {
@@ -32,12 +34,12 @@ const Carousel: Component = () => {
           body: JSON.stringify(formData()),
         });
         if (response.ok) {
-          console.log('POST request succeeded');
+          console.log('POST request succeeded.');
         } else {
-          console.error('POST request failed');
+          setError('500. Request failed. Please retry.');
         }
       } catch (error) {
-        console.error('An error occurred:', error);
+        setError('504. An internal error occurred. Please retry.');
       }
       if (logo) {
         const logoData = new FormData();
@@ -52,7 +54,6 @@ const Carousel: Component = () => {
             }
           );
           if (rb.ok) {
-            console.log('Image upload succeeded');
             navigate('/brand');
           } else {
             console.error('Image upload failed');
@@ -72,8 +73,8 @@ const Carousel: Component = () => {
         <div class="justify-center items-center">
           <CreateBrandFormGeneral
             setFormData={setFormData}
-            error={error}
-            setError={setError}
+            error={errorReq}
+            setError={setErrorReq}
           />
         </div>
         <div class="justify-center items-center">
