@@ -6,7 +6,7 @@ import Navbar from '../components/navbar/navbar';
 import EmptyBrandLight from '../components/emptybrand/emptyBrandLight';
 import BrandCard from '../components/cards/brandCard';
 import BrandSocialCard from '../components/cards/brandSocialCard';
-import PageLoader from '../components/utils/pageloader';
+import PageLoader from '../components/pageloader';
 
 const Brand: Component = () => {
   const { state: auth } = useAuth0();
@@ -43,11 +43,11 @@ const Brand: Component = () => {
             <EmptyBrandLight />
           </div>
         ) : (
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 mt-4">
-            <div class="col-span-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 mt-4">
+            <div class="col-start-1 md:col-start-2">
               <BrandCard userData={userData} />
             </div>
-            <div class="col-start-2">
+            <div class="col-start-1 md:col-start-2">
               <BrandSocialCard userData={userData} />
             </div>
           </div>

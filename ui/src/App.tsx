@@ -3,7 +3,7 @@ import { Routes, Route } from '@solidjs/router';
 
 import { useAuth0 } from './components/auth0-solidjs';
 import AuthenticationGuard from './components/guards/authGuard';
-import PageLoader from './components/utils/pageloader';
+import PageLoader from './components/pageloader';
 
 const Home = lazy(() => import('./routes/home'));
 const Account = lazy(() => import('./routes/account'));

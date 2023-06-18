@@ -1,6 +1,6 @@
 import { withAuthRequired } from '../auth0-solidjs';
 
-import PageLoader from '../utils/pageloader';
+import PageLoader from '../pageloader';
 
 const AuthenticationGuard = ({ component }) => {
   const Component = withAuthRequired(component, {
