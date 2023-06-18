@@ -52,7 +52,7 @@ const BrandSocialCard: Component = (props) => {
             {(s) => (
               <>
                 {editSocials() === s.type ? (
-                  <EditableRow svg={s.svg} setEditSocials={setEditSocials} />
+                  <EditableRow svg={s.svg} type={s.type.toLowerCase()} setEditSocials={setEditSocials} />
                 ) : (
                   <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th
@@ -71,7 +71,7 @@ const BrandSocialCard: Component = (props) => {
                     </th>
                     <td class="px-6 py-4">
                       <div class="flex items-center">
-                        <span class="bg-gray-100 text-gray-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full mr-2 dark:bg-gray-700 dark:text-gray-300">
+                        <span class={"text-gray-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-full mr-2 " + (props.error() ? 'bg-green-900 bg-opacity-25' : 'bg-gray-100')}>
                           <Show
                             when={s.fetch}
                             fallback={

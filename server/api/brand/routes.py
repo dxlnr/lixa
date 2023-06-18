@@ -32,7 +32,27 @@ def create_brand():
     for k, v in j.items():
         b[k] = v
     cbrands.insert_one(b)
-    return ""
+    return jsonify({"status": "success"}), 200
+
+
+@brand_blueprint.route("/update_brand/<string:user_email>", methods=["POST"])
+@cross_origin(supports_credentials=True)
+def brand_logo_upload(user_email: str):
+    """Handles the upload of a brand logo.
+
+    :param user_email: The key is used to identify the brand.
+    """
+    try:
+        j = request.get_json()
+    except:
+        return 500
+    try:
+        b = cbrands.find_one({"user": user_email})
+    except:
+        return 500
+    if request.method == "POST":
+        cbrands.update_one(b, j)
+        return jsonify({"status": "success"}), 200
 
 
 @brand_blueprint.route("/brand_logo_upload/<string:brand_name>", methods=["POST"])
@@ -53,8 +73,8 @@ def brand_logo_upload(brand_name: str) -> (str, int):
                 {"name": brand_name}, {"$set": {"logo": filename}}
             )
         else:
-            return "No Image found.", 404
-        return "Image Upload Successfully", 200
+            return jsonify({"status": "No image found."}), 404
+        return jsonify({"status": "Image upload successful"}), 200
 
 
 @brand_blueprint.route("/get_brand/<string:user_email>", methods=["GET"])
@@ -71,6 +91,6 @@ def get_brand(user_email: str):
             user["image"] = base64.b64encode(data).decode("utf-8")
         except FileNotFoundError:
             user["image"] = None
-        return jsonify(user)
+        return jsonify(user), 200
     else:
-        return None, 204
+        return jsonify({"status": "No brand exists for this user"}), 204
