@@ -37,7 +37,7 @@ def create_brand():
 
 @brand_blueprint.route("/update_brand/<string:user_email>", methods=["POST"])
 @cross_origin(supports_credentials=True)
-def brand_logo_upload(user_email: str):
+def update_brand(user_email: str):
     """Handles the upload of a brand logo.
 
     :param user_email: The key is used to identify the brand.
@@ -45,14 +45,15 @@ def brand_logo_upload(user_email: str):
     try:
         j = request.get_json()
     except:
-        return 500
+        return jsonify({"status": "No data sent."}), 500
     try:
         b = cbrands.find_one({"user": user_email})
     except:
-        return 500
+        return jsonify({"status": "No brand for this user found."}), 500
     if request.method == "POST":
-        cbrands.update_one(b, j)
-        return jsonify({"status": "success"}), 200
+        cbrands.update_one(b, {"$set": j })
+        user = json.loads(json_util.dumps(b))
+        return jsonify(user), 200
 
 
 @brand_blueprint.route("/brand_logo_upload/<string:brand_name>", methods=["POST"])

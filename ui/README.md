@@ -69,7 +69,6 @@ Auth
 
 
 ## Next steps
-- color adjustments
 - add user edit possibility (change name & logo)
 - add brand edit possibility
 - Copilot !!
@@ -78,3 +77,4 @@ Auth
 - adding axios
 - adding error handling of requests
 - brand creation success page & adding some analysis feedback. ( e.g. on the page is show that the content gets quality checked and collected) 
+- navbar needs small adjustment in small mode
