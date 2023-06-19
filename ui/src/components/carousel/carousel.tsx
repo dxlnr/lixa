@@ -44,10 +44,11 @@ const Carousel: Component = () => {
       if (logo) {
         const logoData = new FormData();
         var f = logo();
-        logoData.append('im', f);
+        logoData.append('file', f);
         try {
           const rb = await fetch(
-            `${API_BASE}/brand/brand_logo_upload/${formData()['name']}`,
+            `${API_BASE}/brand/brand_logo_upload/${auth.user?.email}`,
+            // `${API_BASE}/brand/brand_logo_upload`,
             {
               method: 'POST',
               body: logoData,
