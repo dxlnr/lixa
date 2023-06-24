@@ -1,4 +1,5 @@
 """MinIO Bridge"""
+import io
 from minio import Minio
 from minio.error import S3Error
 
@@ -20,21 +21,29 @@ def init_minio_client(
         raise ConnectionError(err)
 
 
-def push_to_s3(client: Minio, bucket: str, obj_path: str, obj_name: str):
-    """Pushes a single object to MinIO S3 bucket.
+def push_bytes_to_s3(client: Minio, bucket: str, obj_name: str, data: bytes, content_type: str) -> str:
+    """Pushes a single bytes object to MinIO S3 bucket.
 
     :param client: Minio Client Object.
     :param bucket: S3 bucket name.
-    :param obj_path: Path to the object which should get push to storage.
-    :param obj_na m_client: minio.Minio,me: Object name in the bucket.
+    :param obj_name: Object name that will be used in storage.
+    :param data: Actual bytes that is the data.
+    :param content_type: 
+    :returns: String message.
     """
     if not client.bucket_exists(bucket):
         client.make_bucket(bucket)
     try:
-        client.fput_object(
+        print("in s3", content_type, type(content_type))
+        print("in s3 bucket", bucket, type(bucket))
+        print("in s3 obj_name", obj_name, type(obj_name))
+        client.put_object(
             bucket,
             obj_name,
-            obj_path,
+            io.BytesIO(data),
+            len(data),
+            content_type,
         )
-    except:
-        pass
+        return f'Successfully uploaded {obj_name} to {bucket}'
+    except S3Error as err:
+        return f'Failed to upload {obj_name} to {bucket}. Error: {err}'
