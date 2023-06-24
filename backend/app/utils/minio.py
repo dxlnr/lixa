@@ -1,5 +1,6 @@
 """MinIO Bridge"""
 import io
+
 from minio import Minio
 from minio.error import S3Error
 
@@ -21,14 +22,16 @@ def init_minio_client(
         raise ConnectionError(err)
 
 
-def push_bytes_to_s3(client: Minio, bucket: str, obj_name: str, data: bytes, content_type: str) -> str:
+def push_bytes_to_s3(
+    client: Minio, bucket: str, obj_name: str, data: bytes, content_type: str
+) -> str:
     """Pushes a single bytes object to MinIO S3 bucket.
 
     :param client: Minio Client Object.
     :param bucket: S3 bucket name.
     :param obj_name: Object name that will be used in storage.
     :param data: Actual bytes that is the data.
-    :param content_type: 
+    :param content_type:
     :returns: String message.
     """
     if not client.bucket_exists(bucket):
@@ -41,10 +44,11 @@ def push_bytes_to_s3(client: Minio, bucket: str, obj_name: str, data: bytes, con
             len(data),
             content_type,
         )
-        return f'Successfully uploaded {obj_name} to {bucket}'
+        return f"Successfully uploaded {obj_name} to {bucket}"
     except S3Error as err:
-        return f'Failed to upload {obj_name} to {bucket}. Error: {err}'
+        return f"Failed to upload {obj_name} to {bucket}. Error: {err}"
 
-def get_s3_obj_url(bucket: str, obj_name: str, region: str = 'eu-central-1') -> str:
+
+def get_s3_obj_url(bucket: str, obj_name: str, region: str = "eu-central-1") -> str:
     """Returns s3 object url for given input."""
     return f"https://{bucket}.s3.{region}.amazonaws.com/{obj_name}"

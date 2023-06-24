@@ -7,19 +7,16 @@ const Gallery = () => {
   const { state: auth } = useAuth0();
   const [prompt, setPrompt] = createSignal('');
   const [blob, setBlob] = createSignal(null);
+  const [user, setUser] = createSignal(auth.user?.email);
 
   const handleSubmit = async (prompt) => {
     if (prompt) {
-      const formData = {
-        prompt: prompt,
-      };
-      const response = await fetch(`${API_BASE}/copilot/prompt`, {
+      const formData = new FormData();
+      formData.append('prompt', prompt);
+
+      const response = await fetch(`${API_BASE}/copilot/create_image`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify(formData),
+        body: formData,
       });
       const blob = await response.blob();
       setBlob(blob);
@@ -32,18 +29,15 @@ const Gallery = () => {
   const saveImage = async () => {
     if (imgs) {
       const uploadImage = new FormData();
-        
-      uploadImage.append('user': auth.user?.email); 
+
+      uploadImage.append('user', user());
       var im = blob();
       uploadImage.append('file', im, 'tmp.jpg');
 
-      const response = await fetch(
-        `${API_BASE}/copilot/save_image`,
-        {
-          method: 'POST',
-          body: uploadImage,
-        }
-      )
+      const response = await fetch(`${API_BASE}/copilot/save_image`, {
+        method: 'POST',
+        body: uploadImage,
+      })
         .then((response) => response.json())
         .then((data) => {
           console.log('Image saved:', data);

@@ -1,14 +1,14 @@
 """Brand API Endpoints"""
-import time
 import json
+import time
 from typing import Optional
-from bson import json_util
 
-from fastapi import File, Form, UploadFile, APIRouter, HTTPException
+from bson import json_util
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from werkzeug.utils import secure_filename
 
 from db import db, minio_client
-from utils.minio import push_bytes_to_s3, get_s3_obj_url
+from utils.minio import get_s3_obj_url, push_bytes_to_s3
 
 brand_router = APIRouter()
 cbrands = db["brands"]
@@ -23,11 +23,14 @@ async def create_brand(info: str = Form(...), file: Optional[UploadFile] = File(
     if file:
         file_content = await file.read()
         filename = f"{int(time.time())}_{secure_filename(file.filename)}"
-        push_bytes_to_s3(minio_client, s3_bucket, filename, file_content, file.content_type)
+        push_bytes_to_s3(
+            minio_client, s3_bucket, filename, file_content, file.content_type
+        )
         brand_data.update({"logo": get_s3_obj_url(s3_bucket, filename)})
 
     r = await cbrands.insert_one(brand_data)
     return {"status": "success"}
+
 
 @brand_router.post("/api/brand/update_brand")
 async def update_brand(form: str = Form(...)):
@@ -36,14 +39,15 @@ async def update_brand(form: str = Form(...)):
     :param form: Dict in the form ['$upd': ..., 'user': $userEmail]
     """
     upd = json.loads(form)
-    user = upd.pop('user')
+    user = upd.pop("user")
     try:
         b = await cbrands.find_one({"user": user})
     except:
-        return {"status": "No user found."} 
-    cbrands.update_one(b, {"$set": upd })
+        return {"status": "No user found."}
+    cbrands.update_one(b, {"$set": upd})
 
     return {"status": "success"}
+
 
 @brand_router.get("/api/brand/get_brand/{user}")
 async def get_brand(user):

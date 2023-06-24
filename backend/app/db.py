@@ -22,6 +22,7 @@ minio_client = init_minio_client(endpoint, access_key, secret_key, region, secur
 
 from pydantic import BaseModel
 
+
 class Brand(BaseModel):
     name: str
     location: str | None = None
@@ -32,4 +33,3 @@ class Brand(BaseModel):
     twitter: str | None = None
     user: str
     logo: str | None = None
-

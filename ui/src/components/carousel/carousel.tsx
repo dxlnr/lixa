@@ -17,7 +17,7 @@ const Carousel: Component = () => {
   const [errorReq, setErrorReq] = createSignal(false);
   const navigate = useNavigate();
   const { state: auth } = useAuth0();
-  
+
   const handleSubmit = async () => {
     if (formData()['name'] === undefined || formData()['name'] === '') {
       setErrorReq(true);
@@ -26,10 +26,10 @@ const Carousel: Component = () => {
       setFormData((prev) => ({ ...prev, ['user']: auth.user?.email }));
       const form = new FormData();
 
-      form.append('info', JSON.stringify(formData())); 
+      form.append('info', JSON.stringify(formData()));
       if (logo()) {
-          var logo_file = logo();
-          form.append('file', logo_file);
+        var logo_file = logo();
+        form.append('file', logo_file);
       }
       try {
         const response = await fetch(`${API_BASE}/brand/create_brand`, {
@@ -76,7 +76,7 @@ const Carousel: Component = () => {
           onClick={prev}
           data-carousel-prev
         >
-          <span 
+          <span
             class="inline-flex items-center justify-center w-8 h-8 rounded-full 
             sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 
             group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
@@ -105,7 +105,7 @@ const Carousel: Component = () => {
           onClick={next}
           data-carousel-next
         >
-          <span 
+          <span
             class="inline-flex items-center justify-center w-8 h-8 rounded-full 
             sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 
             group-focus:ring-4 group-focus:ring-white group-focus:outline-none"

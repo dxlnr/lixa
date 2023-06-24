@@ -22,17 +22,14 @@ const EditableRow: Component = (props) => {
   };
 
   const handleSubmit = async () => {
-    setFormData((prev) => ({ ...prev, ['user']: auth.user?.email}));
+    setFormData((prev) => ({ ...prev, ['user']: auth.user?.email }));
     const form = new FormData();
     form.append('form', JSON.stringify(formData()));
     try {
-      const response = await fetch(
-        `${API_BASE}/brand/update_brand`,
-        {
-          method: 'POST',
-          body: form,
-        }
-      );
+      const response = await fetch(`${API_BASE}/brand/update_brand`, {
+        method: 'POST',
+        body: form,
+      });
       if (response.ok) {
         props.setEditSocials(null);
         navigate('/copilot');
