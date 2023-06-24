@@ -8,7 +8,7 @@ from fastapi import File, Form, UploadFile, APIRouter, HTTPException
 from werkzeug.utils import secure_filename
 
 from db import db, minio_client
-from utils.minio import push_bytes_to_s3
+from utils.minio import push_bytes_to_s3, get_s3_obj_url
 
 brand_router = APIRouter()
 cbrands = db["brands"]
@@ -24,7 +24,7 @@ async def create_brand(info: str = Form(...), file: Optional[UploadFile] = File(
         file_content = await file.read()
         filename = f"{int(time.time())}_{secure_filename(file.filename)}"
         push_bytes_to_s3(minio_client, s3_bucket, filename, file_content, file.content_type)
-        brand_data.update({"logo": filename})
+        brand_data.update({"logo": get_s3_obj_url(s3_bucket, filename)})
 
     r = await cbrands.insert_one(brand_data)
     return {"status": "success"}

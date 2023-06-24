@@ -1,3 +1,7 @@
 fastapi
 uvicorn
 motor
+torch
+diffusors
+pymongo
+minio

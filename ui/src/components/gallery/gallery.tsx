@@ -32,11 +32,13 @@ const Gallery = () => {
   const saveImage = async () => {
     if (imgs) {
       const uploadImage = new FormData();
+        
+      uploadImage.append('user': auth.user?.email); 
       var im = blob();
-      uploadImage.append('im', im, 'test.jpg');
+      uploadImage.append('file', im, 'tmp.jpg');
 
       const response = await fetch(
-        `${API_BASE}/copilot/save_image/${auth.user?.email}`,
+        `${API_BASE}/copilot/save_image`,
         {
           method: 'POST',
           body: uploadImage,

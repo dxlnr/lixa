@@ -44,3 +44,7 @@ def push_bytes_to_s3(client: Minio, bucket: str, obj_name: str, data: bytes, con
         return f'Successfully uploaded {obj_name} to {bucket}'
     except S3Error as err:
         return f'Failed to upload {obj_name} to {bucket}. Error: {err}'
+
+def get_s3_obj_url(bucket: str, obj_name: str, region: str = 'eu-central-1') -> str:
+    """Returns s3 object url for given input."""
+    return f"https://{bucket}.s3.{region}.amazonaws.com/{obj_name}"
