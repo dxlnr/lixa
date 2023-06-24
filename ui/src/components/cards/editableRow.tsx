@@ -22,16 +22,15 @@ const EditableRow: Component = (props) => {
   };
 
   const handleSubmit = async () => {
+    setFormData((prev) => ({ ...prev, ['user']: auth.user?.email}));
+    const form = new FormData();
+    form.append('form', JSON.stringify(formData()));
     try {
       const response = await fetch(
-        `${API_BASE}/brand/update_brand/${auth.user?.email}`,
+        `${API_BASE}/brand/update_brand`,
         {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-          },
-          body: JSON.stringify(formData()),
+          body: form,
         }
       );
       if (response.ok) {
@@ -49,7 +48,7 @@ const EditableRow: Component = (props) => {
     <tr>
       <th
         scope="row"
-        class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+        class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap"
       >
         {props.svg()}
         <div class="pl-3 font-medium opacity-60">

@@ -23,7 +23,6 @@ const Brand: Component = () => {
       }
       const j = await response.json();
       setUserData(j);
-      console.log('user', j);
     } catch (error) {
       console.error('Fetch error: ', error);
     } finally {

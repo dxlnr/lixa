@@ -34,9 +34,6 @@ def push_bytes_to_s3(client: Minio, bucket: str, obj_name: str, data: bytes, con
     if not client.bucket_exists(bucket):
         client.make_bucket(bucket)
     try:
-        print("in s3", content_type, type(content_type))
-        print("in s3 bucket", bucket, type(bucket))
-        print("in s3 obj_name", obj_name, type(obj_name))
         client.put_object(
             bucket,
             obj_name,

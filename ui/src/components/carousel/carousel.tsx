@@ -17,57 +17,6 @@ const Carousel: Component = () => {
   const [errorReq, setErrorReq] = createSignal(false);
   const navigate = useNavigate();
   const { state: auth } = useAuth0();
-
-  // const handleSubmit = async () => {
-  //   if (formData()['name'] === undefined || formData()['name'] === '') {
-  //     setErrorReq(true);
-  //     setError('Please, make sure all required fields are filled.');
-  //   } else {
-  //     setFormData((prev) => ({ ...prev, ['user']: auth.user?.email }));
-  //     try {
-  //       const response = await fetch(`${API_BASE}/brand/create_brand`, {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'Access-Control-Allow-Origin': '*',
-  //         },
-  //         body: JSON.stringify(formData()),
-  //       });
-  //       if (response.ok) {
-  //         console.log('POST request succeeded.');
-  //       } else {
-  //         setError('500. Request failed. Please retry.');
-  //       }
-  //     } catch (error) {
-  //       setError('504. An internal error occurred. Please retry.');
-  //     }
-  //     if (logo) {
-  //       const logoData = new FormData();
-  //       var f = logo();
-  //       logoData.append('file', f);
-  //       try {
-  //         const rb = await fetch(
-  //           `${API_BASE}/brand/brand_logo_upload/${auth.user?.email}`,
-  //           // `${API_BASE}/brand/brand_logo_upload`,
-  //           {
-  //             method: 'POST',
-  //             body: logoData,
-  //           }
-  //         );
-  //         if (rb.ok) {
-  //           navigate('/brand');
-  //         } else {
-  //           console.error('Image upload failed');
-  //         }
-  //       } catch (error) {
-  //         console.error('An error occurred:', error);
-  //       }
-  //     } else {
-  //       navigate('/brand');
-  //     }
-  //   }
-  // };
-  //
   
   const handleSubmit = async () => {
     if (formData()['name'] === undefined || formData()['name'] === '') {
@@ -78,7 +27,7 @@ const Carousel: Component = () => {
       const form = new FormData();
 
       form.append('info', JSON.stringify(formData())); 
-      if (logo) {
+      if (logo()) {
           var logo_file = logo();
           form.append('file', logo_file);
       }
@@ -88,7 +37,6 @@ const Carousel: Component = () => {
           body: form,
         });
         if (response.ok) {
-          console.log('POST request succeeded.');
           navigate('/brand');
         } else {
           setError('500. Request failed. Please retry.');
@@ -128,7 +76,11 @@ const Carousel: Component = () => {
           onClick={prev}
           data-carousel-prev
         >
-          <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+          <span 
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full 
+            sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 
+            group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+          >
             <svg
               aria-hidden="true"
               class="w-5 h-5 text-gray-400 sm:w-6 sm:h-6 dark:text-gray-800"
@@ -153,7 +105,11 @@ const Carousel: Component = () => {
           onClick={next}
           data-carousel-next
         >
-          <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+          <span 
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full 
+            sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 
+            group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+          >
             <svg
               aria-hidden="true"
               class="w-5 h-5 text-gray-400 sm:w-6 sm:h-6 dark:text-gray-800"
