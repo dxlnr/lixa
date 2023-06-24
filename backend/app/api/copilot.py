@@ -47,7 +47,7 @@ async def save_image(user: str = Form(...), file: Optional[UploadFile] = File(No
         push_bytes_to_s3(
             minio_client, s3_bucket, filename, file_content, file.content_type
         )
-        c.update({"logo": get_s3_obj_url(s3_bucket, filename)})
+        c.update({"im": get_s3_obj_url(s3_bucket, filename)})
     else:
         raise HTTPException(
             status_code=404, detail="No image found therefore nothing to store."
