@@ -21,20 +21,40 @@ const SuggestionContainer = () => {
     }
   };
 
+  function handleDoubleClick() {
+    const textField = document.createElement('textarea');
+    textField.innerText = suggestion();
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand('copy');
+    textField.remove();
+  }
+
   return (
-    <div class="bg-white rounded-sm shadow-xl flex flex-col ">
-      <div class="flex items-center justify-end px-3 py-3">
+    <div
+      class={
+        'bg-white shadow-xl flex flex-col ' +
+        (suggestion() == '' ? 'rounded' : 'rounded-t')
+      }
+    >
+      <div class="flex my-auto justify-end">
         <button
           type="submit"
-          class="text-black text-sm font-bold"
+          class="text-black text-sm font-bold p-3.5"
           onClick={fetchData}
         >
           Generate Suggestions
         </button>
       </div>
       {suggestion() !== '' && (
-        <div class="p-4 text-gray-800 border border-t-gray-200">
-          <p class="text-gray-600"> {suggestion()} </p>
+        <div class="p-4">
+          <p
+            class="text-gray-400 hover:text-c-lixa-s"
+            ondblclick={handleDoubleClick}
+          >
+            {' '}
+            {suggestion()}{' '}
+          </p>
         </div>
       )}
     </div>
