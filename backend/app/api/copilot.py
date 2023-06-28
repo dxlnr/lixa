@@ -7,7 +7,7 @@ from typing import Optional
 
 import torch
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
-from fastapi.responses import Response
+from fastapi.responses import Response, StreamingResponse
 
 from db import db, minio_client
 from ml.ldms import txt2img
@@ -55,3 +55,13 @@ async def save_image(user: str = Form(...), file: Optional[UploadFile] = File(No
 
     ccollection.insert_one(c)
     return {"status": "success"}
+
+
+@copilot_router.get("/api/copilot/suggest_prompts")
+async def suggest_prompts():
+    """."""
+    def fake_large_file():
+        for i in range(100): 
+            time.sleep(0.5)
+            yield f"This is line {i}\n"
+    return StreamingResponse(fake_large_file(), media_type='text/event-stream')

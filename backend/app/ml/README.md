@@ -11,3 +11,6 @@ Step-by-Step
 5. Define our Prompt Template
 6. Creating a Vector Store 
 
+
+[Transformers](https://github.com/huggingface/transformers)
+[pyllama](https://github.com/juncongmoo/pyllama.git)
