@@ -6,16 +6,12 @@ import PromptIcon from '../svgs/prompt_icon';
 import UploadIcon from '../svgs/upload_icon';
 import PlusIcon from '../svgs/plus_icon';
 import TextSIcon from '../svgs/text_suggestion_icon';
-import { createVisibleSignal } from '../helper';
 
-const Sidebar = () => {
-  const pv = createVisibleSignal();
-  const sv = createVisibleSignal();
-
+const Sidebar = (props) => {
   return (
     <aside
       id="sidebar-multi-level-sidebar"
-      class="left-0 z-40 h-screen transition-transform -translate-x-full sm:translate-x-0"
+      class="left-0 z-40 w-min transition-transform -translate-x-full sm:translate-x-0"
       aria-label="Sidebar"
     >
       <div class="flex flex-col">
@@ -23,30 +19,19 @@ const Sidebar = () => {
           <div class="flex flex-row">
             <button
               type="button"
-              class="bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
-              onClick={sv.toggle}
-            >
-              <TextSIcon styling="w-7 h-7" />
-            </button>
-            {sv.visible() && <SuggestionContainer />}
-          </div>
-        </div>
-        <div class="flex-none">
-          <div class="flex flex-row">
-            <button
-              type="button"
-              class="bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
-              onClick={pv.toggle}
+              class="bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 
+                font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+              onClick={() => props.setVisible(!props.visible())}
             >
               <PromptIcon styling="w-7 h-7" />
             </button>
-            {pv.visible() && <Gallery />}
           </div>
         </div>
         <div class="flex-none">
           <button
             type="button"
-            class="flex-none bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+            class="bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 
+                font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
           >
             <UploadIcon styling="w-7 h-7" />
           </button>
@@ -54,7 +39,8 @@ const Sidebar = () => {
         <div class="flex-none">
           <button
             type="button"
-            class="flex-none bg-white text-black hover:bg-slate-300 hover:bg-gradient-to-br shadow-lg shadow-black-500/50 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+            class="bg-white text-black hover:bg-slate-300 hover:bg-gradient-to-br 
+            shadow-lg shadow-black-500/50 rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
           >
             <PlusIcon styling="w-7 h-7" />
           </button>
