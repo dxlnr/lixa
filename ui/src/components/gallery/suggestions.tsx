@@ -3,7 +3,10 @@ import { on } from 'solid-js/dom';
 import { API_BASE } from '../../api';
 import { useAuth0 } from '../auth0-solidjs';
 
-const SuggestionContainer = () => {
+import CopyIcon from '../svgs/copy_icon';
+import TerminalIcon from '../svgs/terminal_icon';
+
+const SuggestionContainer = (props) => {
   const { state: auth } = useAuth0();
   const [suggestion, setSuggestion] = createSignal('');
 
@@ -30,10 +33,14 @@ const SuggestionContainer = () => {
     textField.remove();
   }
 
+  const handleUseClick = () => {
+    props.setPrompt(suggestion());
+  };
+
   return (
     <div
       class={
-        'bg-white shadow-xl flex flex-col ' +
+        'col-span-2 bg-white shadow-xl flex flex-col ' +
         (suggestion() == '' ? 'rounded' : 'rounded-t')
       }
     >
@@ -50,11 +57,20 @@ const SuggestionContainer = () => {
         <div class="p-4">
           <p
             class="text-gray-400 hover:text-c-lixa-s"
-            ondblclick={handleDoubleClick}
+            ondblclick={handleUseClick}
           >
             {' '}
             {suggestion()}{' '}
           </p>
+
+          <div class="flex flex-row justify-end">
+            <div>
+              <CopyIcon styling="w-6 h-6" />{' '}
+            </div>
+            <div>
+              <TerminalIcon styling="w-6 h-6" />{' '}
+            </div>
+          </div>
         </div>
       )}
     </div>

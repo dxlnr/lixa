@@ -61,7 +61,7 @@ async def save_image(user: str = Form(...), file: Optional[UploadFile] = File(No
 async def suggest_prompts():
     """."""
     def fake_large_file():
-        for i in range(100): 
-            time.sleep(0.5)
+        for i in range(12): 
+            time.sleep(0.25)
             yield f"This is line {i}\n"
     return StreamingResponse(fake_large_file(), media_type='text/event-stream')

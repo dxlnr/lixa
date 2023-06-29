@@ -56,15 +56,15 @@ const Gallery = () => {
 
   return (
     <div class="container mx-auto pr-2 pl-2 pb-2">
-      <div class="grid grid-cols-2 gap-4">
-        <div class="flex flex-col">
-          <div class="relative flex items-center">
-            <input
+      <div class="grid grid-cols-5 gap-4">
+        <div class="col-span-3 flex flex-col">
+          <div class="relative flex flex-wrap items-center">
+            <textarea
               type="text"
               id="input-group-1"
-              class="w-full placeholder-slate-300 text-slate-600 relative bg-white 
+              class="flex-grow placeholder-slate-300 text-slate-600 bg-white 
                 rounded text-sm border-0 shadow-lg outline-none focus:outline-none 
-                focus:ring ring-slate-400 px-3 py-3 h-12"
+                focus:ring ring-slate-400 pl-3 pr-22 py-3 h-12 w-auto resize-y"
               placeholder="prompt"
               value={prompt()}
               onChange={(e) => setPrompt(e.target.value)}
@@ -113,7 +113,7 @@ const Gallery = () => {
             <></>
           )}
         </div>
-        <SuggestionContainer />
+        <SuggestionContainer setPrompt={setPrompt} />
       </div>
     </div>
   );
