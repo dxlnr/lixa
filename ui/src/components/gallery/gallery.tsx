@@ -63,8 +63,17 @@ const Gallery = () => {
               type="text"
               id="input-group-1"
               class="flex-grow placeholder-slate-300 text-slate-600 bg-white 
-                rounded text-sm border-0 shadow-lg outline-none focus:outline-none 
-                focus:ring ring-slate-400 pl-3 pr-22 py-3 h-12 w-auto resize-y"
+                rounded text-md border-0 shadow-lg outline-none focus:outline-none 
+                focus:ring-1 ring-slate-400 pl-3 py-3 pr-28 h-12 resize-none overflow-y-auto"
+              onInput={(event) => {
+                const target = event.target as HTMLTextAreaElement;
+                target.style.height = `${target.scrollHeight}px`;
+              }}
+              onClick={(event) => {
+                event.stopPropagation();
+              }}
+              row={1}
+              tabindex={0}
               placeholder="prompt"
               value={prompt()}
               onChange={(e) => setPrompt(e.target.value)}
