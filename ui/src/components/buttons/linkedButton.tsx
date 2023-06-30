@@ -8,7 +8,9 @@ const LinkedButton: Component = (props) => {
       <a href="mailto:gabriel.bobinski@lixa.ai">
         <button
           type="submit"
-          class="w-full items-center text-white dark:text-white hover:text-black border border-white hover:bg-white underline font-medium text-xl px-2.5 py-2 inline-flex text-center"
+          class="w-full items-center text-white dark:text-white hover:text-black 
+            border border-white hover:bg-white underline font-medium text-xl 
+            px-2.5 py-2 inline-flex text-center"
           onMouseOut={() => setFillColor('#ffffff')}
           onMouseOver={() => setFillColor('#000000')}
         >

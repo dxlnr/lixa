@@ -2,6 +2,7 @@ import { Component } from 'solid-js';
 
 type IconProps = {
   styling?: string;
+  stroke?: string;
 };
 
 const TerminalIcon: Component<IconProps> = (props) => {
@@ -24,14 +25,14 @@ const TerminalIcon: Component<IconProps> = (props) => {
         <g id="SVGRepo_iconCarrier">
           <path
             d="m4 18 6-6-6-6"
-            stroke="#000000"
+            stroke={props.stroke}
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
           ></path>
           <path
             d="M12 18h8"
-            stroke="#000000"
+            stroke={props.stroke}
             stroke-width="1.5"
             stroke-miterlimit="10"
             stroke-linecap="round"
