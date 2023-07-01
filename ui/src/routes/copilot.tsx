@@ -7,7 +7,7 @@ import Gallery from '../components/gallery/gallery';
 import { createVisibleSignal } from '../components/helper';
 
 const Copilot: Component = () => {
-  const [visible, setVisible] = createSignal(false);
+  const [visible, setVisible] = createSignal(true);
 
   return (
     <div class="h-screen bg-gray-100">
