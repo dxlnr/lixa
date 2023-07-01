@@ -3,6 +3,7 @@ import os
 import json
 from pathlib import Path
 
+from langchain.llms import LlamaCpp
 import torch
 from utils import get_project_root
 
@@ -34,7 +35,7 @@ def load(
     tokenizer = Tokenizer(model_path=tokenizer_path)
     model_args.vocab_size = tokenizer.n_words
     torch.set_default_tensor_type(torch.cuda.HalfTensor)
-    model = Transformer(model_args)
+    model = Transformer(model_args).cuda().half()
     torch.set_default_tensor_type(torch.FloatTensor)
     model.load_state_dict(checkpoint, strict=False)
     generator = LLaMA(model, tokenizer)
@@ -45,7 +46,7 @@ def init_generator(
     ckpt_dir: str,
     tokenizer_path: str,
     max_seq_len: int = 512,
-    max_batch_size: int = 1,
+    max_batch_size: int = 2,
 ):
     local_rank, world_size = 0, 1
     generator = load(
@@ -55,9 +56,17 @@ def init_generator(
     return generator
 
 
-generator = init_generator(
-    ckpt_dir=os.path.join(get_project_root(), "ml/models/pyllama/model/7B"),
-    tokenizer_path=os.path.join(
-        get_project_root(), "ml/models/pyllama/model/tokenizer.model"
+# generator = init_generator(
+#     ckpt_dir=os.path.join(get_project_root(), "ml/models/pyllama/models/7B"),
+#     tokenizer_path=os.path.join(
+#         get_project_root(), "ml/models/pyllama/models/tokenizer.model"
+#     ),
+# )
+
+
+llamacpp = LlamaCpp(
+    model_path=os.path.join(
+        get_project_root(), "ml/models/pyllama/models/7B/ggml-model-f16.bin"
     ),
+    temperature=0.5,
 )

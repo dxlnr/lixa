@@ -10,7 +10,8 @@ from db import db, minio_client
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import Response, StreamingResponse
 from ml.ldms import txt2img
-from ml.llm import generator
+# from ml.llm import generator, llamacpp
+from ml.llm import llamacpp
 from utils.helpers import str_from_email
 from utils.minio import get_s3_obj_url, push_bytes_to_s3
 
@@ -60,15 +61,22 @@ async def save_image(user: str = Form(...), file: Optional[UploadFile] = File(No
 @copilot_router.get("/api/copilot/suggest_prompts")
 async def suggest_prompts():
     """."""
-    prompt = "Can you please suggest me a prompt for a generative AI model that \
-             should create an image that advertises a product for the company Nike."
+    prompt = "Can you please write me a prompt for a generative AI model that will create an image advertising a shoe for the company Nike?"
 
-    results = generator.generate(
-        prompt,
-        max_gen_len=250,
-        temperature=0.8,
-        top_p=0.95,
-    )
+    # This model needs a list of strings as input.
+    # results = generator.generate(
+    #     prompt,
+    #     max_gen_len=250,
+    #     temperature=0.8,
+    #     top_p=0.95,
+    # )
+
+    def stream_model():
+        for chunk in llamacpp.stream(prompt, stop=["."]):
+            result = chunk["choices"][0]
+            yield result["text"]
+
+    # print(results)
 
     #     def fake_large_file():
     #         for i in range(12):
@@ -76,7 +84,7 @@ async def suggest_prompts():
     #             yield f"This is line {i}\n"
 
     # return StreamingResponse(fake_large_file(), media_type="text/event-stream")
-    return StreamingResponse(results, media_type="text/event-stream")
+    return StreamingResponse(stream_model(), media_type="text/event-stream")
 
 
 # @copilot_router.post("/api/copilot/llama/")

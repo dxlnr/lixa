@@ -5,3 +5,9 @@ torch
 diffusors
 pymongo
 minio
+sentencepiece
+hiq-python
+chardet
+transformers
+werkzeug
+python-multipart
