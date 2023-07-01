@@ -1,13 +1,12 @@
 """Main Entrypoint"""
+from api.brand import brand_router
+from api.collection import collection_router
+from api.copilot import copilot_router
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
-from api.brand import brand_router
-from api.collection import collection_router
-from api.copilot import copilot_router
 
 app = FastAPI()
 app.add_middleware(

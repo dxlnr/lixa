@@ -4,11 +4,10 @@ import time
 from typing import Optional
 
 from bson import json_util
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile
-from werkzeug.utils import secure_filename
-
 from db import db, minio_client
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from utils.minio import get_s3_obj_url, push_bytes_to_s3
+from werkzeug.utils import secure_filename
 
 brand_router = APIRouter()
 cbrands = db["brands"]

@@ -5,7 +5,6 @@ from pathlib import Path
 
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo.server_api import ServerApi
-
 from utils.env import Env
 from utils.minio import init_minio_client
 
@@ -23,7 +22,10 @@ minio_client = init_minio_client(endpoint, access_key, secret_key, region, secur
 from pydantic import BaseModel
 
 
+# Data Models Section
 class Brand(BaseModel):
+    """Custom Brand Data model which will be stored to db."""
+
     name: str
     location: str | None = None
     profession: str | None = None
@@ -33,3 +35,12 @@ class Brand(BaseModel):
     twitter: str | None = None
     user: str
     logo: str | None = None
+
+
+class LLamaInput(BaseModel):
+    """Defines the input model for the language model."""
+
+    prompts: list[str]
+    max_gen_len: int = 250
+    temperature: float = 0.8
+    top_p: float = 0.95

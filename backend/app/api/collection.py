@@ -1,7 +1,6 @@
 """Collection API Endpoints"""
-from fastapi import APIRouter, File, Form, HTTPException, UploadFile
-
 from db import db
+from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 
 collection_router = APIRouter()
 cccollection = db["collection"]
