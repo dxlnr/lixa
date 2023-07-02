@@ -1,13 +1,15 @@
-import { createSignal } from 'solid-js';
+import { Component } from 'solid-js';
 
-import SuggestionContainer from './suggestions';
-import Gallery from '../gallery/gallery';
 import PromptIcon from '../svgs/prompt_icon';
 import UploadIcon from '../svgs/upload_icon';
-import PlusIcon from '../svgs/plus_icon';
-import TextSIcon from '../svgs/text_suggestion_icon';
+import ChatIcon from '../svgs/chat_icon';
 
-const Sidebar = (props) => {
+type SidebarProps = {
+  setVisible?: string;
+  setChatVisible?: string;
+};
+
+const Sidebar: Component<SidebarProps> = (props) => {
   return (
     <aside
       id="sidebar-multi-level-sidebar"
@@ -32,8 +34,9 @@ const Sidebar = (props) => {
             type="button"
             class="bg-white text-black hover:bg-slate-300 shadow-lg shadow-black-500/50 
                 font-medium rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
+            onClick={() => props.setChatVisible(!props.chatVisible())}
           >
-            <UploadIcon styling="w-7 h-7" />
+            <ChatIcon styling="w-7 h-7" />
           </button>
         </div>
         <div class="flex-none">
@@ -42,7 +45,7 @@ const Sidebar = (props) => {
             class="bg-white text-black hover:bg-slate-300 hover:bg-gradient-to-br 
             shadow-lg shadow-black-500/50 rounded-md text-md px-5 py-2.5 text-center mr-2 mb-2"
           >
-            <PlusIcon styling="w-7 h-7" />
+            <UploadIcon styling="w-7 h-7" />
           </button>
         </div>
       </div>
